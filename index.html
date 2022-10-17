@@ -37,4 +37,17 @@
       return 'Invalid Selection. Please try again.';
     }
   }
+
+  // Create fuction for each round
+  function playRound(playerSelection, computerSelection) {
+    // Tie condition
+    if (playerSelection === computerSelection) {
+      return `It is a tie! You both chose ${playerSelection}`;
+    }
+  }
+
+  // debug
+  console.log(playRound(playerSelection, computerSelection));
+  console.log(`computer chose ${computerSelection}`);
+  console.log(`player chose ${playerSelection}`);
 </script>
