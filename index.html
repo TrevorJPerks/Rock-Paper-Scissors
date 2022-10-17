@@ -16,4 +16,22 @@
       return 'scissors';
     }
   }
+
+  //Prompt and Get Player's Selection
+  function playerSelection() {
+    // Declare selection, prompt user for value, store toLowerCase value in selection
+    const userSelection = prompt('Rock, Paper,or Scissors?').toLowerCase();
+    // Check to see if user input is rock, paper, Or scissors
+    if (
+      userSelection == 'rock' ||
+      userSelection == 'paper' ||
+      userSelection == 'scissors'
+    ) {
+      // if user input is valid return selection
+      return userSelection;
+    } else {
+      // if user input is invalid alert and rerun playerSelection
+      return 'Invalid Selection. Please try again.';
+    }
+  }
 </script>
