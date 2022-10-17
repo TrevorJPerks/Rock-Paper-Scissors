@@ -1,23 +1,23 @@
 <script>
-  let computerSelection = '';
-  let playerSelection = '';
+  let computerSelection = getComputerChoice();
+  let playerSelection = getPlayerSelection();
+
   // Get Computer's Selection
   function getComputerChoice() {
     // Declare randomNumGen
     const randomNumGen = Math.floor(Math.random() * 3);
     // Condition Rock
     if (randomNumGen == 0) {
-      computerSelection = 'rock';
+      return 'rock';
     }
     // Condition Paper
     else if (randomNumGen == 1) {
-      computerSelection = 'paper';
+      return 'paper';
     }
     // Condition Scissors
     else if (randomNumGen == 2) {
-      computerSelection = 'scissors';
+      return 'scissors';
     }
-    return computerSelection;
   }
 
   //Prompt and Get Player's Selection
@@ -31,11 +31,10 @@
       userInput == 'scissors'
     ) {
       // if user input is valid return selection
-      playerSelection = userInput;
+      return userInput;
     } else {
       // if user input is invalid alert and rerun playerSelection
       return 'Invalid Selection. Please try again.';
     }
-    return playerSelection;
   }
 </script>
