@@ -1,37 +1,41 @@
 <script>
+  let computerSelection = '';
+  let playerSelection = '';
   // Get Computer's Selection
   function getComputerChoice() {
     // Declare randomNumGen
     const randomNumGen = Math.floor(Math.random() * 3);
     // Condition Rock
     if (randomNumGen == 0) {
-      return 'rock';
+      computerSelection = 'rock';
     }
     // Condition Paper
     else if (randomNumGen == 1) {
-      return 'paper';
+      computerSelection = 'paper';
     }
     // Condition Scissors
     else if (randomNumGen == 2) {
-      return 'scissors';
+      computerSelection = 'scissors';
     }
+    return computerSelection;
   }
 
   //Prompt and Get Player's Selection
-  function playerSelection() {
+  function getPlayerSelection() {
     // Declare selection, prompt user for value, store toLowerCase value in selection
-    const userSelection = prompt('Rock, Paper,or Scissors?').toLowerCase();
+    const userInput = prompt('Rock, Paper,or Scissors?').toLowerCase();
     // Check to see if user input is rock, paper, Or scissors
     if (
-      userSelection == 'rock' ||
-      userSelection == 'paper' ||
-      userSelection == 'scissors'
+      userInput == 'rock' ||
+      userInput == 'paper' ||
+      userInput == 'scissors'
     ) {
       // if user input is valid return selection
-      return userSelection;
+      playerSelection = userInput;
     } else {
       // if user input is invalid alert and rerun playerSelection
       return 'Invalid Selection. Please try again.';
     }
+    return playerSelection;
   }
 </script>
