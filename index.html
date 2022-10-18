@@ -1,6 +1,6 @@
 <script>
   let computerSelection = getComputerChoice();
-  let playerSelection = getPlayerSelection();
+  let playerSelection;
 
   // score variables
   let playerScore = 0;
@@ -24,26 +24,9 @@
     }
   }
 
-  //Prompt and Get Player's Selection
-  function getPlayerSelection() {
-    // Declare selection, prompt user for value, store toLowerCase value in selection
-    const userInput = prompt('Rock, Paper,or Scissors?').toLowerCase();
-    // Check to see if user input is rock, paper, Or scissors
-    if (
-      userInput == 'rock' ||
-      userInput == 'paper' ||
-      userInput == 'scissors'
-    ) {
-      // if user input is valid return selection
-      return userInput;
-    } else {
-      // if user input is invalid alert and rerun playerSelection
-      return 'Invalid Selection. Please try again.';
-    }
-  }
-
   // Create fuction for each round
   function playRound(playerSelection, computerSelection) {
+    playerSelection = prompt('Rock, Paper,or Scissors?').toLowerCase();
     // Tie condition
     if (playerSelection == computerSelection) {
       return `It is a tie! You both chose ${playerSelection}!`;
@@ -82,8 +65,7 @@
   }
 
   // debug
-  console.log(playRound(playerSelection, computerSelection));
-  console.log(`computer chose ${computerSelection}`);
-  console.log(`player chose ${playerSelection}`);
-  console.log(`${playerScore} , ${computerScore} `);
+  // console.log(playRound(playerSelection, computerSelection));
+  // console.log(`computer chose ${computerSelection}`);
+  // console.log(`${playerScore} , ${computerScore} `);
 </script>
