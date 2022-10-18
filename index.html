@@ -64,6 +64,22 @@
     }
   }
 
+  function game() {
+    // for loop playRound() 5 times
+    for (let i = 0; i < 5; i++) {
+      playRound(playerSelection, computerSelection);
+      // Debug
+      // console.log(`${playerScore} , ${computerScore}`);
+    }
+    // winner condition
+    if (playerScore == computerScore) {
+      return `It's a tie! ${playerScore} , ${computerScore}`;
+    } else if (playerScore > computerScore) {
+      return `Players wins! ${playerScore} , ${computerScore}`;
+    } else {
+      return `Computer wins! ${playerScore} , ${computerScore}`;
+    }
+  }
   // debug
   // console.log(playRound(playerSelection, computerSelection));
   // console.log(`computer chose ${computerSelection}`);
