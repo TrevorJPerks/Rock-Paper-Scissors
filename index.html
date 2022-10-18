@@ -2,6 +2,10 @@
   let computerSelection = getComputerChoice();
   let playerSelection = getPlayerSelection();
 
+  // score variables
+  let playerScore = 0;
+  let computerScore = 0;
+
   // Get Computer's Selection
   function getComputerChoice() {
     // Declare randomNumGen
@@ -45,17 +49,34 @@
       return `It is a tie! You both chose ${playerSelection}!`;
       // Player win conditions
     } else if (playerSelection == 'rock' && computerSelection == 'scissors') {
+      // increment playerScore
+      ++playerScore;
       return 'You win! Rock beats Scissors!';
+      // increment playerScore
+      ++playerScore;
     } else if (playerSelection == 'paper' && computerSelection == 'rock') {
+      // increment playerScore
+      ++playerScore;
       return 'You win! Paper beats Rock!';
+      // increment playerScore
+      ++playerScore;
     } else if (playerSelection == 'scissors' && computerSelection == 'paper') {
+      // increment playerScore
+      ++playerScore;
       return 'You win! Scissors beats Paper!';
+
       // Computer win conditions
     } else if (playerSelection == 'scissors' && computerSelection == 'rock') {
+      // increment computerScore
+      ++computerScore;
       return 'You lose! Rock beats Scissors!';
     } else if (playerSelection == 'rock' && computerSelection == 'paper') {
+      // increment computerScore
+      ++computerScore;
       return 'You lose! Paper beats Rock!';
     } else if (playerSelection == 'paper' && computerSelection == 'scissors') {
+      // increment computerScore
+      ++computerScore;
       return 'You lose! Scissors beats Paper!';
     }
   }
@@ -64,4 +85,5 @@
   console.log(playRound(playerSelection, computerSelection));
   console.log(`computer chose ${computerSelection}`);
   console.log(`player chose ${playerSelection}`);
+  console.log(`${playerScore} , ${computerScore} `);
 </script>
