@@ -1,5 +1,5 @@
 <script>
-  let computerSelection = getComputerChoice();
+  let computerSelection;
   let playerSelection;
 
   // score variables
@@ -24,41 +24,33 @@
     }
   }
 
-  // Create fuction for each round and keep score
+  // Create function for each round and keep score
   function playRound(playerSelection, computerSelection) {
+    computerSelection = getComputerChoice();
+    console.log(`computer chose ${computerSelection}`);
     playerSelection = prompt('Rock, Paper,or Scissors?').toLowerCase();
     // Tie condition
     if (playerSelection == computerSelection) {
       return `It is a tie! You both chose ${playerSelection}!`;
-      // Player win conditions
+      // Player win conditions & increment playerScore
     } else if (playerSelection == 'rock' && computerSelection == 'scissors') {
-      // increment playerScore
       ++playerScore;
       return 'You win! Rock beats Scissors!';
-      // increment playerScore
-      ++playerScore;
     } else if (playerSelection == 'paper' && computerSelection == 'rock') {
-      // increment playerScore
       ++playerScore;
       return 'You win! Paper beats Rock!';
-      // increment playerScore
-      ++playerScore;
     } else if (playerSelection == 'scissors' && computerSelection == 'paper') {
-      // increment playerScore
       ++playerScore;
       return 'You win! Scissors beats Paper!';
 
-      // Computer win conditions
+      // Computer win conditions & increment computerScore
     } else if (playerSelection == 'scissors' && computerSelection == 'rock') {
-      // increment computerScore
       ++computerScore;
       return 'You lose! Rock beats Scissors!';
     } else if (playerSelection == 'rock' && computerSelection == 'paper') {
-      // increment computerScore
       ++computerScore;
       return 'You lose! Paper beats Rock!';
     } else if (playerSelection == 'paper' && computerSelection == 'scissors') {
-      // increment computerScore
       ++computerScore;
       return 'You lose! Scissors beats Paper!';
     }
@@ -69,7 +61,7 @@
     for (let i = 0; i < 5; i++) {
       playRound(playerSelection, computerSelection);
       // Debug
-      // console.log(`${playerScore} , ${computerScore}`);
+      console.log(`${playerScore} , ${computerScore}`);
     }
     // winner condition
     if (playerScore == computerScore) {
