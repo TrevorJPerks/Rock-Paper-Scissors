@@ -8,20 +8,11 @@
 
   // Get Computer's Selection
   function getComputerChoice() {
-    // Declare randomNumGen
+    let computerChoice = ['rock', 'paper', 'scissors'];
+
     const randomNumGen = Math.floor(Math.random() * 3);
-    // Condition Rock
-    if (randomNumGen == 0) {
-      return 'rock';
-    }
-    // Condition Paper
-    else if (randomNumGen == 1) {
-      return 'paper';
-    }
-    // Condition Scissors
-    else if (randomNumGen == 2) {
-      return 'scissors';
-    }
+
+    return computerChoice[randomNumGen];
   }
 
   // Create function for each round and keep score
