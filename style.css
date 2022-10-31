@@ -12,6 +12,10 @@ body {
   background-color: hsl(233deg 12% 13%);
 }
 
+p {
+  font-size: 36px;
+}
+
 .game-container {
   background-color: white;
   display: flex;
@@ -19,6 +23,11 @@ body {
   text-align: center;
   width: 550px;
   border-radius: 5%;
+}
+
+.announcement {
+  margin: 16px;
+  font-size: 24px;
 }
 .score-computerselect-container {
   display: flex;
@@ -32,7 +41,8 @@ body {
   margin-top: 60px;
 }
 
-.custombutton {
+.custombutton,
+.custombutton-player {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -63,4 +73,23 @@ button {
 
 button:hover {
   background-color: hsla(120, 100%, 36%, 0.856);
+}
+
+/* JS Transfrom Classes */
+.computer-selection {
+  transition: all 0.4s ease;
+}
+
+.transform-computer-selection {
+  transform: rotate(360deg) scale(0.1);
+}
+
+.player-rock-selected {
+  border-color: hsla(120, 100%, 46%, 0.856);
+}
+.player-paper-selected {
+  border-color: hsla(120, 100%, 46%, 0.856);
+}
+.player-scissors-selected {
+  border-color: hsla(120, 100%, 46%, 0.856);
 }
