@@ -15,7 +15,7 @@ const announcementText = document.querySelector('.announcement');
 const playerScoreDisplay = document.querySelector('.player-score p');
 const computerScoreDisplay = document.querySelector('.computer-score p');
 
-//Endgame Displays
+//Endgame Elements
 const playerEndGameScoreDisplay = document.querySelector(
   '.endgame-player-score p'
 );
