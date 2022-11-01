@@ -110,6 +110,7 @@ button:hover {
   position: absolute;
   display: flex;
   flex-direction: column;
+  align-items: space-around;
   text-align: center;
   width: 550px;
   border-radius: 16px;
