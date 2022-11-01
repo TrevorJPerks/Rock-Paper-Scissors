@@ -137,17 +137,6 @@ function endGame() {
   }
 }
 
-function resetGame() {
-  computerScoreDisplay.textContent = '0';
-  playerScoreDisplay.textContent = '0';
-  playerScore = 0;
-  computerScore = 0;
-  gameScreen.classList.remove('hide-gameScreen');
-  endGameScreen.classList.remove('show-endgameScreen');
-  announcement('Make a selection and click shoot!');
-  computerChoiceImage.src = 'images/blankplaceholder-img.png';
-}
-
 shootButton.addEventListener('click', () => {
   getComputerChoice();
   playRound(playerSelection, computerSelection);
@@ -158,5 +147,5 @@ shootButton.addEventListener('click', () => {
 });
 
 playAgainButton.addEventListener('click', () => {
-  resetGame();
+  window.location.reload();
 });
