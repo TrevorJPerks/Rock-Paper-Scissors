@@ -29,7 +29,7 @@ p {
 }
 /* Computer score */
 .computer-score p {
-  color: hsl(289, 56%, 76%);
+  color: hsl(289, 100%, 80%);
 }
 
 .game-container {
@@ -81,7 +81,7 @@ img {
 }
 
 .custombutton {
-  background-color: hsl(289, 45%, 83%);
+  background-color: hsl(289, 100%, 78%);
 }
 
 button {
