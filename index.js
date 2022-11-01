@@ -82,11 +82,17 @@ function playRound(playerSelection, computerSelection) {
 
 // Transform functions
 function computerChoiceTransform() {
+  if (playerSelection == undefined) {
+    return;
+  }
   computerChoiceIcon.classList.add('transform-computer-selection');
 }
 
 computerChoiceIcon.addEventListener('transitionend', () => {
   computerChoiceIcon.classList.remove('transform-computer-selection');
+  if (playerSelection == undefined) {
+    return;
+  }
   switch (computerSelection) {
     case 'rock':
       computerChoiceImage.src = 'images/rock-svg.svg';
