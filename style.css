@@ -107,5 +107,7 @@ button:hover {
 }
 
 .active {
+  transition: all 0.2s ease;
+  transform: scale(1.1);
   border-color: hsl(120, 46%, 60%, 0.856);
 }
