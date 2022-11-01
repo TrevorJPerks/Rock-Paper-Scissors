@@ -16,11 +16,12 @@ body {
   );
 }
 
+/* Player score */
 p {
   color: hsl(180, 23%, 75%);
   font-size: 36px;
 }
-
+/* Computer score */
 .computer-score p {
   color: hsl(289, 56%, 76%);
 }
@@ -32,7 +33,7 @@ p {
   width: 550px;
   border-radius: 5%;
   backdrop-filter: blur(20px);
-  background-color: rgba(255, 255, 255, 0.5);
+  background-color: rgba(255, 255, 255, 0.2);
   box-shadow: 0 1px 12px rbga(0, 0, 0, 0.25);
   border: 1px solid rgba(255, 255, 255, 0.3);
 }
