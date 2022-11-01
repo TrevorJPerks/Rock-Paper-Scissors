@@ -1,13 +1,28 @@
+// Game screens
+const gameScreen = document.querySelector('.game-container');
+const endGameScreen = document.querySelector('.endgame-container');
+
+//Game elements
 const playerChoices = document.querySelectorAll('.custombutton-player');
 const computerChoiceImage =
   document.getElementsByClassName('comp-choice-img')[0];
 const computerChoiceIcon = document.querySelector('.computer-selection');
-const shootButton = document.querySelector('button');
+const shootButton = document.querySelector('.shoot-button');
+const playAgainButton = document.querySelector('.playagain-button');
 const announcementText = document.querySelector('.announcement');
 
 //Score Display
 const playerScoreDisplay = document.querySelector('.player-score p');
 const computerScoreDisplay = document.querySelector('.computer-score p');
+
+//Endgame Score Display
+const playerEndGameScoreDisplay = document.querySelector(
+  '.endgame-player-score p'
+);
+const computerEndGameScoreDisplay = document.querySelector(
+  '.endgame-computer-score p'
+);
+const winnerText = document.querySelector('.endgame-announcement');
 
 let computerSelection;
 let playerSelection;
@@ -18,11 +33,11 @@ let computerScore = 0;
 
 // Get Computer's Selection
 function getComputerChoice() {
-  let computerChoice = ['rock', 'paper', 'scissors'];
+  let computerChoices = ['rock', 'paper', 'scissors'];
 
   const randomNumGen = Math.floor(Math.random() * 3);
 
-  computerSelection = computerChoice[randomNumGen];
+  computerSelection = computerChoices[randomNumGen];
 }
 
 function announcement(str) {
@@ -65,25 +80,6 @@ function playRound(playerSelection, computerSelection) {
   }
 }
 
-// function game() {
-//   // Reset Score at game end
-//   playerScore = 0;
-//   computerScore = 0;
-//   console.log(`${playerScore} , ${computerScore}`);
-//   // for loop playRound() 5 times
-//   for (let i = 0; i < 5; i++) {
-//     playRound(playerSelection, computerSelection);
-//   }
-//   // winner condition
-//   if (playerScore == computerScore) {
-//     return `It's a tie! ${playerScore} , ${computerScore}`;
-//   } else if (playerScore > computerScore) {
-//     return `Players wins! ${playerScore} , ${computerScore}`;
-//   } else {
-//     return `Computer wins! ${playerScore} , ${computerScore}`;
-//   }
-// }
-
 // Transform functions
 function computerChoiceTransform() {
   computerChoiceIcon.classList.add('transform-computer-selection');
@@ -122,10 +118,42 @@ playerChoices.forEach(function (item) {
   });
 });
 
+function announceWinner() {
+  if (computerScore > playerScore) {
+    winnerText.textContent = 'The computer beat you!';
+  } else {
+    winnerText.textContent = 'You beat the computer!';
+  }
+}
+//Score checker
+function endGame() {
+  if (computerScore === 5 || playerScore === 5) {
+    gameScreen.classList.add('hide-gameScreen');
+    endGameScreen.classList.add('show-endgameScreen');
+    playerEndGameScoreDisplay.textContent = `${playerScore}`;
+    computerEndGameScoreDisplay.textContent = `${computerScore}`;
+    announceWinner();
+  }
+}
+
+function resetGame() {
+  computerScoreDisplay.textContent = '0';
+  playerScoreDisplay.textContent = '0';
+  playerScore = 0;
+  computerScore = 0;
+  gameScreen.classList.remove('hide-gameScreen');
+  endGameScreen.classList.remove('show-endgameScreen');
+}
+
 shootButton.addEventListener('click', () => {
   getComputerChoice();
   playRound(playerSelection, computerSelection);
   computerChoiceTransform();
-  playerScoreDisplay.textContent = `${playerScore}`;
+  endGame();
   computerScoreDisplay.textContent = `${computerScore}`;
+  playerScoreDisplay.textContent = `${playerScore}`;
+});
+
+playAgainButton.addEventListener('click', () => {
+  resetGame();
 });
