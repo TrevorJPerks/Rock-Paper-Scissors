@@ -136,6 +136,9 @@ function endGame() {
     announceWinner();
   }
 }
+function refreshPage() {
+  window.location.reload();
+}
 
 shootButton.addEventListener('click', () => {
   getComputerChoice();
@@ -147,5 +150,6 @@ shootButton.addEventListener('click', () => {
 });
 
 playAgainButton.addEventListener('click', () => {
-  window.location.reload();
+  endGameScreen.classList.remove('show-endgameScreen');
+  setTimeout(refreshPage, 400);
 });
