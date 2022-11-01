@@ -9,8 +9,11 @@ body {
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background-color: blueviolet;
-  background-image: url(images/background-img.jpg);
+  background-image: linear-gradient(
+    to bottom right,
+    hsl(292, 100%, 43%),
+    hsl(292, 100%, 12%)
+  );
 }
 
 p {
@@ -23,12 +26,15 @@ p {
 }
 
 .game-container {
-  background-color: hsl(0, 0%, 100%);
   display: flex;
   flex-direction: column;
   text-align: center;
   width: 550px;
   border-radius: 5%;
+  backdrop-filter: blur(20px);
+  background-color: rgba(255, 255, 255, 0.5);
+  box-shadow: 0 1px 12px rbga(0, 0, 0, 0.25);
+  border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
 .announcement {
@@ -101,5 +107,5 @@ button:hover {
 }
 
 .active {
-  border-color: hsla(120, 100%, 46%, 0.856);
+  border-color: hsl(120, 46%, 60%, 0.856);
 }
