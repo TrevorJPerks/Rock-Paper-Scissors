@@ -1,9 +1,11 @@
-const playerRockIcon = document.querySelector('.player-rock');
-const playerPaperIcon = document.querySelector('.player-paper');
-const playerScissorsIcon = document.querySelector('.player-scissors');
-const shootButton = document.querySelector('button');
-const announcement = document.querySelector('.announcement');
+const playerChoices = document.querySelectorAll('.custombutton-player');
+const computerChoiceImage =
+  document.getElementsByClassName('comp-choice-img')[0];
 const computerChoiceIcon = document.querySelector('.computer-selection');
+const shootButton = document.querySelector('button');
+const announcementText = document.querySelector('.announcement');
+
+//Score Display
 const playerScoreDisplay = document.querySelector('.player-score p');
 const computerScoreDisplay = document.querySelector('.computer-score p');
 
@@ -20,46 +22,47 @@ function getComputerChoice() {
 
   const randomNumGen = Math.floor(Math.random() * 3);
 
-  return computerChoice[randomNumGen];
+  computerSelection = computerChoice[randomNumGen];
+}
+
+function announcement(str) {
+  announcementText.textContent = str;
 }
 
 // Create function for each round and keep score
 function playRound(playerSelection, computerSelection) {
   // Get computer and selection
-  computerSelection = getComputerChoice();
 
   if (playerSelection == undefined) {
-    return (announcement.textContent = 'Make a selection before shooting!');
+    announcement('Make a selection before shooting!');
   }
-  // playerSelection = prompt('Rock, Paper,or Scissors?').toLowerCase();
 
   // Tie condition
-  if (playerSelection == computerSelection) {
-    announcement.textContent = `It is a tie! You both chose ${playerSelection}!`;
+  if (playerSelection === computerSelection) {
+    announcement(`It is a tie! You both chose ${playerSelection}!`);
 
     // Player win conditions & increment playerScore
-  } else if (playerSelection == 'rock' && computerSelection == 'scissors') {
+  } else if (playerSelection === 'rock' && computerSelection == 'scissors') {
     ++playerScore;
-    announcement.textContent = 'You win! Rock beats Scissors!';
-  } else if (playerSelection == 'paper' && computerSelection == 'rock') {
+    announcement('You win! Rock beats Scissors!');
+  } else if (playerSelection === 'paper' && computerSelection == 'rock') {
     ++playerScore;
-    announcement.textContent = 'You win! Paper beats Rock!';
-  } else if (playerSelection == 'scissors' && computerSelection == 'paper') {
+    announcement('You win! Paper beats Rock!');
+  } else if (playerSelection === 'scissors' && computerSelection == 'paper') {
     ++playerScore;
-    announcement.textContent = 'You win! Scissors beats Paper!';
+    announcement('You win! Scissors beats Paper!');
 
     // Computer win conditions & increment computerScore
-  } else if (playerSelection == 'scissors' && computerSelection == 'rock') {
+  } else if (playerSelection === 'scissors' && computerSelection == 'rock') {
     ++computerScore;
-    announcement.textContent = 'You lose! Rock beats Scissors!';
-  } else if (playerSelection == 'rock' && computerSelection == 'paper') {
+    announcement('You lose! Rock beats Scissors!');
+  } else if (playerSelection === 'rock' && computerSelection == 'paper') {
     ++computerScore;
-    announcement.textContent = 'You lose! Paper beats Rock!';
-  } else if (playerSelection == 'paper' && computerSelection == 'scissors') {
+    announcement('You lose! Paper beats Rock!');
+  } else if (playerSelection === 'paper' && computerSelection == 'scissors') {
     ++computerScore;
-    announcement.textContent = 'You lose! Scissors beats Paper!';
+    announcement('You lose! Scissors beats Paper!');
   }
-  console.log('shot!');
 }
 
 // function game() {
@@ -81,27 +84,46 @@ function playRound(playerSelection, computerSelection) {
 //   }
 // }
 
+// Transform functions
 function computerChoiceTransform() {
   computerChoiceIcon.classList.add('transform-computer-selection');
 }
 
 computerChoiceIcon.addEventListener('transitionend', () => {
   computerChoiceIcon.classList.remove('transform-computer-selection');
+  switch (computerSelection) {
+    case 'rock':
+      computerChoiceImage.src = 'images/rock-svg.svg';
+      break;
+    case 'paper':
+      computerChoiceImage.src = 'images/paper-svg.svg';
+      break;
+    case 'scissors':
+      computerChoiceImage.src = 'images/scissors-svg.svg';
+  }
 });
 
-playerRockIcon.addEventListener('click', () => {
-  playerSelection = 'rock';
-});
-
-playerPaperIcon.addEventListener('click', () => {
-  playerSelection = 'paper';
-});
-
-playerScissorsIcon.addEventListener('click', () => {
-  playerSelection = 'scissors';
+// Player's Selection and Visualizations
+playerChoices.forEach(function (item) {
+  item.addEventListener('click', function (e) {
+    playerChoices.forEach(function (item) {
+      item.classList.remove('active');
+    });
+    item.classList.add('active');
+    if (item.classList.contains('player-rock')) {
+      playerSelection = 'rock';
+    }
+    if (item.classList.contains('player-paper')) {
+      playerSelection = 'paper';
+    }
+    if (item.classList.contains('player-scissors')) {
+      playerSelection = 'scissors';
+    }
+  });
 });
 
 shootButton.addEventListener('click', () => {
+  getComputerChoice();
   playRound(playerSelection, computerSelection);
   computerChoiceTransform();
   playerScoreDisplay.textContent = `${playerScore}`;
