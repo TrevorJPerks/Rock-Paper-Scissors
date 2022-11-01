@@ -2,6 +2,12 @@
   margin: 0;
   padding: 0;
   font-family: 'Secular One', sans-serif;
+  user-drag: none;
+  -webkit-user-drag: none;
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
 }
 
 body {
@@ -51,9 +57,10 @@ p {
 .player-selection-container {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-around;
+  justify-content: space-evenly;
   margin-top: 60px;
 }
+
 img {
   width: 64px;
   height: auto;
@@ -71,8 +78,6 @@ img {
   border-radius: 5%;
   border: 6px dashed #666666;
   box-shadow: 10px 10px 14px -9px rgba(0, 0, 0, 0.42);
-  -webkit-box-shadow: 10px 10px 14px -9px rgba(0, 0, 0, 0.42);
-  -moz-box-shadow: 10px 10px 14px -9px rgba(0, 0, 0, 0.42);
 }
 
 .custombutton {
