@@ -46,6 +46,10 @@ p {
 }
 
 .announcement {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100px;
   margin: 16px;
   font-size: 24px;
 }
