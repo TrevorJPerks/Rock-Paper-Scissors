@@ -144,6 +144,8 @@ function resetGame() {
   computerScore = 0;
   gameScreen.classList.remove('hide-gameScreen');
   endGameScreen.classList.remove('show-endgameScreen');
+  announcement('Make a selection and click shoot!');
+  computerChoiceImage.src = 'images/blankplaceholder-img.png';
 }
 
 shootButton.addEventListener('click', () => {
