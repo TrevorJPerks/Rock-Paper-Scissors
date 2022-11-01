@@ -13,11 +13,16 @@ body {
 }
 
 p {
+  color: hsl(180, 23%, 75%);
   font-size: 36px;
 }
 
+.computer-score p {
+  color: hsl(289, 56%, 76%);
+}
+
 .game-container {
-  background-color: white;
+  background-color: hsl(0, 0%, 100%);
   display: flex;
   flex-direction: column;
   text-align: center;
@@ -41,6 +46,10 @@ p {
   justify-content: space-around;
   margin-top: 60px;
 }
+img {
+  width: 64px;
+  height: auto;
+}
 
 .custombutton,
 .custombutton-player {
@@ -58,13 +67,17 @@ p {
   -moz-box-shadow: 10px 10px 14px -9px rgba(0, 0, 0, 0.42);
 }
 
+.custombutton {
+  background-color: hsl(289, 45%, 83%);
+}
+
 button {
   align-self: center;
   width: 100px;
   height: 36px;
   border: none;
   font-size: 18px;
-  background-color: hsla(120, 100%, 46%, 0.856);
+  background-color: hsla(120, 46%, 60%, 0.856);
   color: white;
   border-radius: 16px;
   margin: 50px 0px 30px 0px;
@@ -74,7 +87,7 @@ button {
 }
 
 button:hover {
-  background-color: hsla(120, 100%, 36%, 0.856);
+  background-color: hsla(120, 46%, 43%, 0.856);
 }
 
 /* JS Transfrom Classes */
@@ -86,12 +99,6 @@ button:hover {
   transform: rotate(360deg) scale(0.1);
 }
 
-.player-rock-selected {
-  border-color: hsla(120, 100%, 46%, 0.856);
-}
-.player-paper-selected {
-  border-color: hsla(120, 100%, 46%, 0.856);
-}
-.player-scissors-selected {
+.active {
   border-color: hsla(120, 100%, 46%, 0.856);
 }
