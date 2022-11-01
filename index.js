@@ -15,7 +15,7 @@ const announcementText = document.querySelector('.announcement');
 const playerScoreDisplay = document.querySelector('.player-score p');
 const computerScoreDisplay = document.querySelector('.computer-score p');
 
-//Endgame Score Display
+//Endgame Displays
 const playerEndGameScoreDisplay = document.querySelector(
   '.endgame-player-score p'
 );
@@ -34,9 +34,7 @@ let computerScore = 0;
 // Get Computer's Selection
 function getComputerChoice() {
   let computerChoices = ['rock', 'paper', 'scissors'];
-
   const randomNumGen = Math.floor(Math.random() * 3);
-
   computerSelection = computerChoices[randomNumGen];
 }
 
@@ -47,15 +45,12 @@ function announcement(str) {
 // Create function for each round and keep score
 function playRound(playerSelection, computerSelection) {
   // Get computer and selection
-
   if (playerSelection == undefined) {
     announcement('Make a selection before shooting!');
   }
-
   // Tie condition
   if (playerSelection === computerSelection) {
     announcement(`It is a tie! You both chose ${playerSelection}!`);
-
     // Player win conditions & increment playerScore
   } else if (playerSelection === 'rock' && computerSelection == 'scissors') {
     ++playerScore;
@@ -66,7 +61,6 @@ function playRound(playerSelection, computerSelection) {
   } else if (playerSelection === 'scissors' && computerSelection == 'paper') {
     ++playerScore;
     announcement('You win! Scissors beats Paper!');
-
     // Computer win conditions & increment computerScore
   } else if (playerSelection === 'scissors' && computerSelection == 'rock') {
     ++computerScore;
@@ -131,7 +125,8 @@ function announceWinner() {
     winnerText.textContent = 'You beat the computer!';
   }
 }
-//Score checker
+
+//Check score and end the game if score = 5
 function endGame() {
   if (computerScore === 5 || playerScore === 5) {
     gameScreen.classList.add('hide-gameScreen');
