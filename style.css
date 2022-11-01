@@ -1,8 +1,8 @@
 * {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
   font-family: 'Secular One', sans-serif;
-  user-drag: none;
   -webkit-user-drag: none;
   user-select: none;
   -moz-user-select: none;
@@ -37,17 +37,19 @@ p {
   flex-direction: column;
   text-align: center;
   width: 550px;
-  border-radius: 5%;
+  border-radius: 16px;
   backdrop-filter: blur(20px);
   background-color: rgba(255, 255, 255, 0.2);
   box-shadow: 0 1px 12px rbga(0, 0, 0, 0.25);
   border: 1px solid rgba(255, 255, 255, 0.3);
+  transition: all 0.7s ease;
 }
 
 .announcement {
   margin: 16px;
   font-size: 24px;
 }
+
 .score-computerselect-container {
   display: flex;
   justify-content: space-around;
@@ -103,6 +105,40 @@ button:hover {
   background-color: hsla(120, 46%, 43%, 0.856);
 }
 
+/* ENDGAME STYLE */
+.endgame-container {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  width: 550px;
+  border-radius: 16px;
+  backdrop-filter: blur(20px);
+  background-color: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 1px 12px rbga(0, 0, 0, 0.25);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  /* Anim */
+  transition: all 0.7s ease;
+  transform: scale(0);
+}
+
+.endgame-score-container {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  margin: 20px;
+}
+
+.endgame-announcement {
+  margin: 16px;
+  font-size: 32px;
+}
+
+.playagain-button {
+  width: 150px;
+  height: 35px;
+}
+
 /* JS Transfrom Classes */
 .computer-selection {
   transition: all 0.4s ease;
@@ -116,4 +152,12 @@ button:hover {
   transition: all 0.2s ease;
   transform: scale(1.1);
   border-color: hsla(120, 44%, 49%, 0.856);
+}
+
+.hide-gameScreen {
+  transform: scale(0);
+}
+
+.show-endgameScreen {
+  transform: scale(1);
 }
