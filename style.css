@@ -16,21 +16,17 @@ body {
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background-image: linear-gradient(
-    to bottom right,
-    hsl(292, 100%, 43%),
-    hsl(292, 100%, 12%)
-  );
+  background-color: hsl(233deg 12% 13%);
 }
-
 /* Player score */
 p {
-  color: hsl(180, 23%, 75%);
+  color: hsl(180, 36%, 82%);
   font-size: 36px;
 }
 /* Computer score */
-.computer-score p {
-  color: hsl(289, 100%, 80%);
+.computer-score p,
+.endgame-computer-score p {
+  color: hsl(289, 100%, 85%);
 }
 
 .game-container {
@@ -38,11 +34,8 @@ p {
   flex-direction: column;
   text-align: center;
   width: 550px;
-  border-radius: 16px;
-  backdrop-filter: blur(20px);
-  background-color: rgba(255, 255, 255, 0.2);
-  box-shadow: 0 1px 12px rbga(0, 0, 0, 0.25);
-  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 10px;
+  background-color: hsl(60, 90%, 92%);
   transition: all 0.5s ease;
 }
 
@@ -88,7 +81,7 @@ img {
 }
 
 .custombutton {
-  background-color: hsl(289, 100%, 78%);
+  background-color: hsl(289, 100%, 85%);
 }
 
 button {
@@ -118,11 +111,8 @@ button:hover {
   align-items: space-around;
   text-align: center;
   width: 300px;
-  border-radius: 16px;
-  backdrop-filter: blur(20px);
-  background-color: rgba(255, 255, 255, 0.2);
-  box-shadow: 0 1px 12px rbga(0, 0, 0, 0.25);
-  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 10px;
+  background-color: hsl(60, 90%, 92%);
   /* Anim */
   transition: all 0.3s ease;
   transform: scale(0);
