@@ -24,93 +24,14 @@ const computerEndGameScoreDisplay = document.querySelector(
 );
 const winnerText = document.querySelector('.endgame-announcement');
 
-let computerSelection;
-let playerSelection;
-
-// score variables
-let playerScore = 0;
-let computerScore = 0;
-
-// Get Computer's Selection
-function getComputerChoice() {
-  let computerChoices = ['rock', 'paper', 'scissors'];
-  const randomNumGen = Math.floor(Math.random() * 3);
-  computerSelection = computerChoices[randomNumGen];
-}
-
-function updateAnnouncement(str) {
+function announcement(str) {
   announcementText.textContent = str;
 }
 
-// Compare playerSelection and computerSelection to determine round winner. Increment Score.
-function playRound() {
-  // Player must make selection
-  if (playerSelection === undefined) {
-    updateAnnouncement('Make a selection before shooting!');
-    return;
-  }
-  // Tie condition
-  if (playerSelection === computerSelection) {
-    updateAnnouncement(`It is a tie! You both chose ${playerSelection}!`);
-    return;
-  }
-  //Combined playerSelection and computerSelection into a single value.
-  const combinedSelections = playerSelection + '.' + computerSelection;
+let computerSelection;
+let playerSelection;
 
-  // Determine, and announce round winner, incement score
-  switch (combinedSelections) {
-    case 'rock.scissors':
-      updateAnnouncement('You win! Rock beats Scissors!');
-      ++playerScore;
-      break;
-    case 'paper.rock':
-      updateAnnouncement('You win! Scissors beats Paper!');
-      ++playerScore;
-      break;
-    case 'scissors.paper':
-      updateAnnouncement('You win! Scissors beats Paper!');
-      ++playerScore;
-      break;
-    case 'scissors.rock':
-      updateAnnouncement('You lose! Rock beats Scissors!');
-      ++computerScore;
-      break;
-    case 'rock.paper':
-      updateAnnouncement('You lose! Paper beats Rock!');
-      ++computerScore;
-      break;
-    case 'paper.scissors':
-      updateAnnouncement('You lose! Scissors beats Paper!');
-      ++computerScore;
-  }
-}
-
-// Transform functions
-function computerChoiceTransform() {
-  if (playerSelection == undefined) {
-    return;
-  }
-  computerChoiceIcon.classList.add('transform-computer-selection');
-}
-
-computerChoiceIcon.addEventListener('transitionend', () => {
-  computerChoiceIcon.classList.remove('transform-computer-selection');
-  if (playerSelection == undefined) {
-    return;
-  }
-  switch (computerSelection) {
-    case 'rock':
-      computerChoiceImage.src = 'images/rock-svg.svg';
-      break;
-    case 'paper':
-      computerChoiceImage.src = 'images/paper-svg.svg';
-      break;
-    case 'scissors':
-      computerChoiceImage.src = 'images/scissors-svg.svg';
-  }
-});
-
-// Player's Selection and Visualizations
+// Get Player's Selection and create Visualization
 playerChoices.forEach(function (item) {
   item.addEventListener('click', function (e) {
     playerChoices.forEach(function (item) {
@@ -127,6 +48,91 @@ playerChoices.forEach(function (item) {
       playerSelection = 'scissors';
     }
   });
+});
+
+// Get Computer's Selection
+function getComputerChoice() {
+  let computerChoices = ['rock', 'paper', 'scissors'];
+  const randomNumGen = Math.floor(Math.random() * 3);
+  computerSelection = computerChoices[randomNumGen];
+}
+
+// Update Computer Icon Image
+function updateComputerIconImage() {
+  switch (computerSelection) {
+    case 'rock':
+      computerChoiceImage.src = 'images/rock-svg.svg';
+      break;
+    case 'paper':
+      computerChoiceImage.src = 'images/paper-svg.svg';
+      break;
+    case 'scissors':
+      computerChoiceImage.src = 'images/scissors-svg.svg';
+  }
+}
+
+// score variables
+let playerScore = 0;
+let computerScore = 0;
+
+// Compare playerSelection and computerSelection to determine round winner. Increment Score.
+function playRound() {
+  // Player must make selection
+  if (playerSelection === undefined) {
+    announcement('Make a selection before shooting!');
+    return;
+  }
+  // Tie condition
+  if (playerSelection === computerSelection) {
+    announcement(`It is a tie! You both chose ${playerSelection}!`);
+    return;
+  }
+  //Combine playerSelection and computerSelection into a single value.
+  const combinedSelections = playerSelection + '.' + computerSelection;
+
+  // Determine, announce round winner, and incement score based on combinedSelections
+  switch (combinedSelections) {
+    case 'rock.scissors':
+      announcement('You win! Rock beats Scissors!');
+      ++playerScore;
+      break;
+    case 'paper.rock':
+      announcement('You win! Scissors beats Paper!');
+      ++playerScore;
+      break;
+    case 'scissors.paper':
+      announcement('You win! Scissors beats Paper!');
+      ++playerScore;
+      break;
+    case 'scissors.rock':
+      announcement('You lose! Rock beats Scissors!');
+      ++computerScore;
+      break;
+    case 'rock.paper':
+      announcement('You lose! Paper beats Rock!');
+      ++computerScore;
+      break;
+    case 'paper.scissors':
+      announcement('You lose! Scissors beats Paper!');
+      ++computerScore;
+  }
+}
+
+// Computer Icon functions
+function computerChoiceIconTransform() {
+  if (playerSelection == undefined) {
+    return;
+  }
+  computerChoiceIcon.classList.add('transform-computer-icon');
+}
+
+// Remove classList on transitionend and update Icon image
+computerChoiceIcon.addEventListener('transitionend', () => {
+  computerChoiceIcon.classList.remove('transform-computer-icon');
+  if (playerSelection == undefined) {
+    return;
+  }
+  updateComputerIconImage();
 });
 
 function announceWinner() {
@@ -147,6 +153,7 @@ function endGame() {
     announceWinner();
   }
 }
+
 function refreshPage() {
   window.location.reload();
 }
@@ -154,7 +161,7 @@ function refreshPage() {
 shootButton.addEventListener('click', () => {
   getComputerChoice();
   playRound();
-  computerChoiceTransform();
+  computerChoiceIconTransform();
   endGame();
   computerScoreDisplay.textContent = `${computerScore}`;
   playerScoreDisplay.textContent = `${playerScore}`;
