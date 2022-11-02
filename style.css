@@ -32,7 +32,7 @@ p {
   display: flex;
   flex-direction: column;
   text-align: center;
-  width: 550px;
+  width: 400px;
   border-radius: 10px;
   background-color: hsl(60, 90%, 92%);
   box-shadow: 10px 10px 14px -9px rgba(0, 0, 0, 0.42);
