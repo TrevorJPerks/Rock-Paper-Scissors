@@ -114,7 +114,7 @@ function playRound() {
 
 // Computer Icon functions
 function computerChoiceIconTransform() {
-  if (playerSelection == undefined) {
+  if (playerSelection === undefined) {
     return;
   }
   computerChoiceIcon.classList.add('transform-computer-icon');
@@ -127,7 +127,7 @@ computerChoiceIcon.addEventListener('transitionend', () => {
 });
 
 function announceWinner() {
-  if (playerScore == 0) {
+  if (playerScore === 0) {
     winnerText.textContent = 'The computer skunked you!';
     return;
   }
