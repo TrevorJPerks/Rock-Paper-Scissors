@@ -31,9 +31,9 @@ function announcement(str) {
 let computerSelection;
 let playerSelection;
 
-// Get Player's Selection and create Visualization
+// Create Visualization for and record Player's Selection
 playerChoices.forEach(function (item) {
-  item.addEventListener('click', function (e) {
+  item.addEventListener('click', function () {
     playerChoices.forEach(function (item) {
       item.classList.remove('active');
     });
