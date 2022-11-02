@@ -47,10 +47,12 @@ function playRound() {
   // Player must make selection
   if (playerSelection === undefined) {
     updateAnnouncement('Make a selection before shooting!');
+    return;
   }
   // Tie condition
   if (playerSelection === computerSelection) {
     updateAnnouncement(`It is a tie! You both chose ${playerSelection}!`);
+    return;
   }
   //Combined playerSelection and computerSelection into a single value.
   const combinedSelections = playerSelection + '.' + computerSelection;
