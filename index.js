@@ -12,16 +12,10 @@ const playAgainButton = document.querySelector('.playagain-button');
 const announcementText = document.querySelector('.announcement');
 
 //Score Display
-const playerScoreDisplay = document.querySelector('.player-score p');
-const computerScoreDisplay = document.querySelector('.computer-score p');
+const playerScoreDisplay = document.querySelectorAll('.player-score p');
+const computerScoreDisplay = document.querySelectorAll('.computer-score p');
 
 //Endgame Elements
-const playerEndGameScoreDisplay = document.querySelector(
-  '.endgame-player-score p'
-);
-const computerEndGameScoreDisplay = document.querySelector(
-  '.endgame-computer-score p'
-);
 const winnerText = document.querySelector('.endgame-announcement');
 
 function announcement(str) {
@@ -156,8 +150,6 @@ function endGame() {
   if (computerScore === 5 || playerScore === 5) {
     gameScreen.classList.add('hide-gameScreen');
     endGameScreen.classList.add('show-endgameScreen');
-    playerEndGameScoreDisplay.textContent = `${playerScore}`;
-    computerEndGameScoreDisplay.textContent = `${computerScore}`;
     announceWinner();
   }
 }
@@ -171,8 +163,10 @@ shootButton.addEventListener('click', () => {
   playRound();
   computerChoiceIconTransform();
   endGame();
-  computerScoreDisplay.textContent = `${computerScore}`;
-  playerScoreDisplay.textContent = `${playerScore}`;
+  playerScoreDisplay.forEach((item) => (item.textContent = `${playerScore}`));
+  computerScoreDisplay.forEach(
+    (item) => (item.textContent = `${computerScore}`)
+  );
 });
 
 playAgainButton.addEventListener('click', () => {
