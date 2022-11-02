@@ -24,8 +24,7 @@ p {
   font-size: 36px;
 }
 /* Computer score */
-.computer-score p,
-.endgame-computer-score p {
+.computer-score p {
   color: hsl(289, 100%, 85%);
 }
 
