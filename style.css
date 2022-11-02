@@ -154,7 +154,7 @@ button:hover {
   transition: all 0.4s ease;
 }
 
-.transform-computer-selection {
+.transform-computer-icon {
   transform: rotate(360deg) scale(0.1);
 }
 
