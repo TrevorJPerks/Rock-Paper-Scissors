@@ -38,39 +38,48 @@ function getComputerChoice() {
   computerSelection = computerChoices[randomNumGen];
 }
 
-function announcement(str) {
+function updateAnnouncement(str) {
   announcementText.textContent = str;
 }
 
-// Create function for each round and keep score
-function playRound(playerSelection, computerSelection) {
-  // Get computer and selection
-  if (playerSelection == undefined) {
-    announcement('Make a selection before shooting!');
+// Compare playerSelection and computerSelection to determine round winner. Increment Score.
+function playRound() {
+  // Player must make selection
+  if (playerSelection === undefined) {
+    updateAnnouncement('Make a selection before shooting!');
   }
   // Tie condition
   if (playerSelection === computerSelection) {
-    announcement(`It is a tie! You both chose ${playerSelection}!`);
-    // Player win conditions & increment playerScore
-  } else if (playerSelection === 'rock' && computerSelection == 'scissors') {
-    ++playerScore;
-    announcement('You win! Rock beats Scissors!');
-  } else if (playerSelection === 'paper' && computerSelection == 'rock') {
-    ++playerScore;
-    announcement('You win! Paper beats Rock!');
-  } else if (playerSelection === 'scissors' && computerSelection == 'paper') {
-    ++playerScore;
-    announcement('You win! Scissors beats Paper!');
-    // Computer win conditions & increment computerScore
-  } else if (playerSelection === 'scissors' && computerSelection == 'rock') {
-    ++computerScore;
-    announcement('You lose! Rock beats Scissors!');
-  } else if (playerSelection === 'rock' && computerSelection == 'paper') {
-    ++computerScore;
-    announcement('You lose! Paper beats Rock!');
-  } else if (playerSelection === 'paper' && computerSelection == 'scissors') {
-    ++computerScore;
-    announcement('You lose! Scissors beats Paper!');
+    updateAnnouncement(`It is a tie! You both chose ${playerSelection}!`);
+  }
+  //Combined playerSelection and computerSelection into a single value.
+  const combinedSelections = playerSelection + '.' + computerSelection;
+
+  // Determine, and announce round winner, incement score
+  switch (combinedSelections) {
+    case 'rock.scissors':
+      updateAnnouncement('You win! Rock beats Scissors!');
+      ++playerScore;
+      break;
+    case 'paper.rock':
+      updateAnnouncement('You win! Scissors beats Paper!');
+      ++playerScore;
+      break;
+    case 'scissors.paper':
+      updateAnnouncement('You win! Scissors beats Paper!');
+      ++playerScore;
+      break;
+    case 'scissors.rock':
+      updateAnnouncement('You lose! Rock beats Scissors!');
+      ++computerScore;
+      break;
+    case 'rock.paper':
+      updateAnnouncement('You lose! Paper beats Rock!');
+      ++computerScore;
+      break;
+    case 'paper.scissors':
+      updateAnnouncement('You lose! Scissors beats Paper!');
+      ++computerScore;
   }
 }
 
@@ -142,7 +151,7 @@ function refreshPage() {
 
 shootButton.addEventListener('click', () => {
   getComputerChoice();
-  playRound(playerSelection, computerSelection);
+  playRound();
   computerChoiceTransform();
   endGame();
   computerScoreDisplay.textContent = `${computerScore}`;
