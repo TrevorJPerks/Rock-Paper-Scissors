@@ -123,9 +123,6 @@ function computerChoiceIconTransform() {
 // Remove classList on transitionend and update Icon image
 computerChoiceIcon.addEventListener('transitionend', () => {
   computerChoiceIcon.classList.remove('transform-computer-icon');
-  if (playerSelection == undefined) {
-    return;
-  }
   updateComputerIconImage();
 });
 
