@@ -136,6 +136,13 @@ computerChoiceIcon.addEventListener('transitionend', () => {
 });
 
 function announceWinner() {
+  if (playerScore === 0) {
+    winnerText.textContent = 'The computer skunked you!';
+    return;
+  }
+  if (computerScore === 0) {
+    winnerText.textContent = 'You skunked the computer!';
+  }
   if (computerScore > playerScore) {
     winnerText.textContent = 'The computer beat you!';
   } else {
