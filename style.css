@@ -36,6 +36,7 @@ p {
   width: 550px;
   border-radius: 10px;
   background-color: hsl(60, 90%, 92%);
+  box-shadow: 10px 10px 14px -9px rgba(0, 0, 0, 0.42);
   transition: all 0.5s ease;
 }
 
