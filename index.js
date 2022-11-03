@@ -6,7 +6,6 @@ const endGameScreen = document.querySelector('.endgame-container');
 const computerChoiceImage =
   document.getElementsByClassName('comp-choice-img')[0];
 const computerChoiceIcon = document.querySelector('.computer-selection');
-const shootButton = document.querySelector('.shoot-button');
 const playAgainButton = document.querySelector('.playagain-button');
 const announcementText = document.querySelector('.announcement');
 
@@ -95,6 +94,7 @@ function playRound() {
       ++computerScore;
   }
   doEndGame();
+  // Update Scoreboards
   playerScoreDisplay.forEach((item) => (item.textContent = `${playerScore}`));
   computerScoreDisplay.forEach(
     (item) => (item.textContent = `${computerScore}`)
@@ -135,8 +135,6 @@ function doEndGame() {
 function refreshPage() {
   window.location.reload();
 }
-
-shootButton.addEventListener('click', () => {});
 
 // Create a NodeList containing every div with the class of custombutton-player
 const playerChoices = document.querySelectorAll('.custombutton-player');
