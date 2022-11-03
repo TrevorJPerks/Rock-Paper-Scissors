@@ -41,23 +41,32 @@ function getComputerSelection() {
   const computerChoices = ['rock', 'paper', 'scissors'];
   const randomNumGen = Math.floor(Math.random() * 3);
   computerSelection = computerChoices[randomNumGen];
+  updateComputerIcon();
 }
 
-// Update Computer Icon Image
-function updateComputerIconImage() {
-  const computerChoiceImage =
-    document.getElementsByClassName('comp-choice-img')[0];
+// Update Computer Icon
+function updateComputerIcon() {
+  // Do a little animation on computerChoiceIcon
+  const computerChoiceIcon = document.querySelector('.computer-selection');
+  computerChoiceIcon.classList.add('transform-computer-icon');
 
-  switch (computerSelection) {
-    case 'rock':
-      computerChoiceImage.src = 'images/rock-svg.svg';
-      break;
-    case 'paper':
-      computerChoiceImage.src = 'images/paper-svg.svg';
-      break;
-    case 'scissors':
-      computerChoiceImage.src = 'images/scissors-svg.svg';
-  }
+  computerChoiceIcon.addEventListener('transitionend', () => {
+    computerChoiceIcon.classList.remove('transform-computer-icon');
+
+    // Update ComputerIcon Image
+    const computerChoiceImage =
+      document.getElementsByClassName('comp-choice-img')[0];
+    switch (computerSelection) {
+      case 'rock':
+        computerChoiceImage.src = 'images/rock-svg.svg';
+        break;
+      case 'paper':
+        computerChoiceImage.src = 'images/paper-svg.svg';
+        break;
+      case 'scissors':
+        computerChoiceImage.src = 'images/scissors-svg.svg';
+    }
+  });
 }
 
 //Score variables
@@ -65,27 +74,17 @@ let playerScore = 0;
 let computerScore = 0;
 
 function updateScoreBoards() {
-  //Score Elements
-  const playerScoreDisplay = document.querySelectorAll('.player-score p');
-  const computerScoreDisplay = document.querySelectorAll('.computer-score p');
+  //Scoreboard Elements
+  const playerScoreDisplay = document.querySelector('.player-score p');
+  const computerScoreDisplay = document.querySelector('.computer-score p');
   // Update Scoreboards
-  playerScoreDisplay.forEach((item) => (item.textContent = `${playerScore}`));
-  computerScoreDisplay.forEach(
-    (item) => (item.textContent = `${computerScore}`)
-  );
+  playerScoreDisplay.textContent = `${playerScore}`;
+  computerScoreDisplay.textContent = `${computerScore}`;
 }
 
 // Determine round winner. Increment Score.
 function playRound() {
   getComputerSelection();
-  // Do a little animation on the computerChoiceIcon
-  const computerChoiceIcon = document.querySelector('.computer-selection');
-  computerChoiceIcon.classList.add('transform-computer-icon');
-
-  computerChoiceIcon.addEventListener('transitionend', () => {
-    computerChoiceIcon.classList.remove('transform-computer-icon');
-    updateComputerIconImage();
-  });
 
   // Tie condition
   if (playerSelection === computerSelection) {
