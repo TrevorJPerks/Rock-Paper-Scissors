@@ -13,9 +13,6 @@ const announcementText = document.querySelector('.announcement');
 const playerScoreDisplay = document.querySelectorAll('.player-score p');
 const computerScoreDisplay = document.querySelectorAll('.computer-score p');
 
-//Endgame Elements
-const winnerText = document.querySelector('.endgame-announcement');
-
 function pushAnnouncement(str) {
   announcementText.textContent = str;
 }
@@ -109,17 +106,17 @@ computerChoiceIcon.addEventListener('transitionend', () => {
 
 function announceWinner() {
   if (playerScore === 0) {
-    winnerText.textContent = 'The computer skunked you!';
+    pushAnnouncement('The computer skunked you!');
     return;
   }
   if (computerScore === 0) {
-    winnerText.textContent = 'You skunked the computer!';
+    pushAnnouncement('You skunked the computer!');
     return;
   }
   if (computerScore > playerScore) {
-    winnerText.textContent = 'The computer beat you!';
+    pushAnnouncement('The computer beat you!');
   } else {
-    winnerText.textContent = 'You beat the computer!';
+    pushAnnouncement('You beat the computer!');
   }
 }
 
