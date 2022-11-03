@@ -53,6 +53,8 @@ let computerScore = 0;
 function playRound() {
   // Do Computer Choice RNG
   getComputerChoice();
+  // Do a little animation on the computerChoiceIcon
+  computerChoiceIcon.classList.add('transform-computer-icon');
   // Player must make selection
   if (playerSelection === undefined) {
     announcement('Make a selection before shooting!');
@@ -95,14 +97,6 @@ function playRound() {
   doEndGame();
 }
 
-// Computer Icon functions
-function computerChoiceIconTransform() {
-  if (playerSelection === undefined) {
-    return;
-  }
-  computerChoiceIcon.classList.add('transform-computer-icon');
-}
-
 // Remove classList on transitionend and update Icon image
 computerChoiceIcon.addEventListener('transitionend', () => {
   computerChoiceIcon.classList.remove('transform-computer-icon');
@@ -139,8 +133,6 @@ function refreshPage() {
 }
 
 shootButton.addEventListener('click', () => {
-  computerChoiceIconTransform();
-  doEndGame();
   playerScoreDisplay.forEach((item) => (item.textContent = `${playerScore}`));
   computerScoreDisplay.forEach(
     (item) => (item.textContent = `${computerScore}`)
