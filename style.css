@@ -72,12 +72,16 @@ img {
   margin-top: 10px;
   display: flex;
   justify-content: center;
-  background-color: hsl(180, 36%, 82%);
   width: 100px;
   height: 100px;
   border-radius: 5%;
-  border: 6px dashed #666666;
+  border: 6px dashed hsl(0, 0%, 40%);
   box-shadow: 10px 10px 14px -9px rgba(0, 0, 0, 0.42);
+  transition: all 0.2s ease;
+}
+
+.custombutton-player {
+  background-color: hsl(180, 36%, 82%);
 }
 
 .custombutton {
