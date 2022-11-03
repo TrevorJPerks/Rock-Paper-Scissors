@@ -1,6 +1,3 @@
-//Game elements
-const playAgainButton = document.querySelector('.playagain-button');
-
 function pushAnnouncement(str) {
   const announcementText = document.querySelector('.announcement');
   announcementText.textContent = str;
@@ -112,6 +109,7 @@ function announceWinner() {
 
 //Check score and end the game if score = 5
 function doEndGame() {
+  const playAgainButton = document.querySelector('.playagain-button');
   const computerIcon = document.querySelector('.computer-selection');
   const scoreContainer = document.querySelector(
     '.score-computerselect-container'
