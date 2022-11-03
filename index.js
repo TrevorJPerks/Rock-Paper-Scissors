@@ -17,7 +17,7 @@ const computerScoreDisplay = document.querySelectorAll('.computer-score p');
 //Endgame Elements
 const winnerText = document.querySelector('.endgame-announcement');
 
-function announcement(str) {
+function pushAnnouncement(str) {
   announcementText.textContent = str;
 }
 
@@ -57,12 +57,12 @@ function playRound() {
   computerChoiceIcon.classList.add('transform-computer-icon');
   // Player must make selection
   if (playerSelection === undefined) {
-    announcement('Make a selection before shooting!');
+    pushAnnouncement('Make a selection before shooting!');
     return;
   }
   // Tie condition
   if (playerSelection === computerSelection) {
-    announcement(`It is a tie! You both chose ${playerSelection}!`);
+    pushAnnouncement(`It is a tie! You both chose ${playerSelection}!`);
     return;
   }
   //Combine playerSelection and computerSelection into a single value.
@@ -71,27 +71,27 @@ function playRound() {
   // Determine, announce round winner, and incement score based on combinedSelections
   switch (combinedSelections) {
     case 'rock.scissors':
-      announcement('You win! Rock beats Scissors!');
+      pushAnnouncement('You win! Rock beats Scissors!');
       ++playerScore;
       break;
     case 'paper.rock':
-      announcement('You win! Scissors beats Paper!');
+      pushAnnouncement('You win! Scissors beats Paper!');
       ++playerScore;
       break;
     case 'scissors.paper':
-      announcement('You win! Scissors beats Paper!');
+      pushAnnouncement('You win! Scissors beats Paper!');
       ++playerScore;
       break;
     case 'scissors.rock':
-      announcement('You lose! Rock beats Scissors!');
+      pushAnnouncement('You lose! Rock beats Scissors!');
       ++computerScore;
       break;
     case 'rock.paper':
-      announcement('You lose! Paper beats Rock!');
+      pushAnnouncement('You lose! Paper beats Rock!');
       ++computerScore;
       break;
     case 'paper.scissors':
-      announcement('You lose! Scissors beats Paper!');
+      pushAnnouncement('You lose! Scissors beats Paper!');
       ++computerScore;
   }
   doEndGame();
