@@ -3,7 +3,6 @@ const gameScreen = document.querySelector('.game-container');
 const endGameScreen = document.querySelector('.endgame-container');
 
 //Game elements
-const playerChoices = document.querySelectorAll('.custombutton-player');
 const computerChoiceImage =
   document.getElementsByClassName('comp-choice-img')[0];
 const computerChoiceIcon = document.querySelector('.computer-selection');
@@ -25,13 +24,21 @@ function announcement(str) {
 let computerSelection;
 let playerSelection;
 
-// Create Visualization for and record Player's Selection
+// Create a NodeList containing every div with the class of custombutton-player
+const playerChoices = document.querySelectorAll('.custombutton-player');
+
+// Iterrate over every node in the NodeList and add a click EventListener
 playerChoices.forEach(function (item) {
   item.addEventListener('click', function () {
+    //On Click, Iterrate over every node in the NodeList and set styles to default
     playerChoices.forEach(function (item) {
-      item.classList.remove('active');
+      item.style.borderColor = 'hsl(0, 0%, 40%)';
+      item.style.transform = 'scale(1)';
     });
-    item.classList.add('active');
+    // Update style of the node that is clicked
+    item.style.transform = 'scale(1.1)';
+    item.style.borderColor = 'hsla(120, 44%, 49%, 0.856)';
+    // Update playerSelection
     if (item.classList.contains('player-rock')) {
       playerSelection = 'rock';
     }
