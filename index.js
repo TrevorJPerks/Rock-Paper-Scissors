@@ -49,11 +49,6 @@ function playRound() {
     computerChoiceIcon.classList.remove('transform-computer-icon');
     updateComputerIconImage();
   });
-  // Player must make selection
-  if (playerSelection === undefined) {
-    pushAnnouncement('Make a selection before shooting!');
-    return;
-  }
   // Tie condition
   if (playerSelection === computerSelection) {
     pushAnnouncement(`It is a tie! You both chose ${playerSelection}!`);
