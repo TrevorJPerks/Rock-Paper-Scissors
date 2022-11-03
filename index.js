@@ -24,6 +24,33 @@ function announcement(str) {
 let computerSelection;
 let playerSelection;
 
+// Create a NodeList containing every div with the class of custombutton-player
+const playerChoices = document.querySelectorAll('.custombutton-player');
+
+// Iterrate over every node in the NodeList and add a click EventListener
+playerChoices.forEach(function (item) {
+  item.addEventListener('click', function () {
+    //On Click, Iterrate over every node in the NodeList and set styles to default
+    playerChoices.forEach(function (item) {
+      item.style.borderColor = 'hsl(0, 0%, 40%)';
+      item.style.transform = 'scale(1)';
+    });
+    // Update style of the node that is clicked
+    item.style.transform = 'scale(1.1)';
+    item.style.borderColor = 'hsla(120, 44%, 49%, 0.856)';
+    // Update playerSelection
+    if (item.classList.contains('player-rock')) {
+      playerSelection = 'rock';
+    }
+    if (item.classList.contains('player-paper')) {
+      playerSelection = 'paper';
+    }
+    if (item.classList.contains('player-scissors')) {
+      playerSelection = 'scissors';
+    }
+  });
+});
+
 // Get Computer's Selection
 function getComputerChoice() {
   let computerChoices = ['rock', 'paper', 'scissors'];
@@ -51,6 +78,7 @@ let computerScore = 0;
 
 // Compare playerSelection and computerSelection to determine round winner. Increment Score.
 function playRound() {
+  // Do Computer Choice RNG
   getComputerChoice();
   // Player must make selection
   if (playerSelection === undefined) {
