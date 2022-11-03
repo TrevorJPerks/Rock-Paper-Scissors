@@ -116,19 +116,13 @@ function refreshPage() {
 //Check score and end the game if score = 5
 function doEndGame() {
   const playAgainButton = document.querySelector('.playagain-button');
-  const computerIcon = document.querySelector('.computer-selection');
-  const scoreContainer = document.querySelector(
-    '.score-computerselect-container'
-  );
   const playerSelectionContainer = document.querySelector(
     '.player-selection-container'
   );
   // when either score = 5, Hide some elements, and reveal playAgainButton
   if (computerScore === 5 || playerScore === 5) {
-    computerIcon.classList.add('hidden');
-    playerSelectionContainer.classList.add('hidden');
     playAgainButton.style.transform = 'scale(1)';
-    computerIcon.style.display = 'none';
+    playerSelectionContainer.classList.add('disable-clicking');
     announceWinner();
   }
   playAgainButton.addEventListener('click', () => {
