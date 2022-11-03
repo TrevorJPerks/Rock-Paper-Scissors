@@ -64,6 +64,7 @@ p {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
+  margin: 50px 0px 20px 0px;
 }
 
 img {
@@ -74,7 +75,7 @@ img {
 .custombutton,
 .custombutton-player {
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   width: 100px;
   height: 100px;
   border-radius: 5%;
@@ -84,7 +85,6 @@ img {
 }
 
 .custombutton-player {
-  margin: 50px 0px 35px 0px;
   background-color: hsl(180, 36%, 82%);
 }
 
@@ -92,29 +92,38 @@ img {
   background-color: hsl(289, 100%, 85%);
 }
 
-button {
+.playagain-button {
   align-self: center;
   width: 300px;
-  height: 100px;
+  height: 60px;
   border: none;
   font-size: 32px;
   background-color: hsla(120, 46%, 60%, 0.856);
   color: white;
   border-radius: 10px;
-  margin: 50px 0px 30px 0px;
+  margin: 0px 0px 20px 0px;
   box-shadow: 10px 10px 14px -9px rgba(0, 0, 0, 0.42);
   -webkit-box-shadow: 10px 10px 14px -9px rgba(0, 0, 0, 0.42);
   -moz-box-shadow: 10px 10px 14px -9px rgba(0, 0, 0, 0.42);
+  /* JS Stuff */
+  transform: scale(0);
+  transition: all 1s ease;
 }
 
-button:hover {
+.playagain-button:hover {
   background-color: hsla(120, 46%, 43%, 0.856);
 }
 
-.playagain-button {
-  transform: scale(0);
-  position: absolute;
-  transition: all 0.5s ease;
+.winner-text {
+  color: rgb(0, 239, 0);
+}
+
+.computer-score .winner-text {
+  opacity: 0;
+}
+
+.player-score .winner-text {
+  opacity: 0;
 }
 
 /* JS Transforn Rulesets */
@@ -129,5 +138,8 @@ button:hover {
 .hidden {
   transition: all 0.5s ease;
   transform: scale(0);
-  /* display: none; */
+}
+
+.disable-clicking {
+  pointer-events: none;
 }
