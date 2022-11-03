@@ -126,18 +126,13 @@ img {
   opacity: 0;
 }
 
-/* JS Transforn Rulesets */
+/* JS Transform Rulesets */
 .computer-selection {
   transition: all 0.4s ease;
 }
 
 .transform-computer-icon {
   transform: rotate(360deg) scale(0.1);
-}
-
-.hidden {
-  transition: all 0.5s ease;
-  transform: scale(0);
 }
 
 .disable-clicking {
