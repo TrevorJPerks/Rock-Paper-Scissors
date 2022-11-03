@@ -124,6 +124,9 @@ function doEndGame() {
     computerIcon.style.display = 'none';
     announceWinner();
   }
+  playAgainButton.addEventListener('click', () => {
+    setTimeout(refreshPage, 400);
+  });
 }
 
 function refreshPage() {
