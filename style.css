@@ -111,25 +111,11 @@ button:hover {
   height: 35px;
 }
 
-/* JS Transfrom Classes */
+/* JS Transforn Rulesets */
 .computer-selection {
   transition: all 0.4s ease;
 }
 
 .transform-computer-icon {
   transform: rotate(360deg) scale(0.1);
-}
-
-.active {
-  transition: all 0.2s ease;
-  transform: scale(1.1);
-  border-color: hsla(120, 44%, 49%, 0.856);
-}
-
-.hide-gameScreen {
-  transform: scale(0);
-}
-
-.show-endgameScreen {
-  transform: scale(1);
 }
