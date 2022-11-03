@@ -3,17 +3,12 @@ const gameScreen = document.querySelector('.game-container');
 const endGameScreen = document.querySelector('.endgame-container');
 
 //Game elements
-const computerChoiceImage =
-  document.getElementsByClassName('comp-choice-img')[0];
-const computerChoiceIcon = document.querySelector('.computer-selection');
 const playAgainButton = document.querySelector('.playagain-button');
-const announcementText = document.querySelector('.announcement');
 
 //Score Display
-const playerScoreDisplay = document.querySelectorAll('.player-score p');
-const computerScoreDisplay = document.querySelectorAll('.computer-score p');
 
 function pushAnnouncement(str) {
+  const announcementText = document.querySelector('.announcement');
   announcementText.textContent = str;
 }
 
@@ -29,6 +24,9 @@ function getComputerChoice() {
 
 // Update Computer Icon Image
 function updateComputerIconImage() {
+  const computerChoiceImage =
+    document.getElementsByClassName('comp-choice-img')[0];
+
   switch (computerSelection) {
     case 'rock':
       computerChoiceImage.src = 'images/rock-svg.svg';
@@ -50,7 +48,13 @@ function playRound() {
   // Do Computer Choice RNG
   getComputerChoice();
   // Do a little animation on the computerChoiceIcon
+  const computerChoiceIcon = document.querySelector('.computer-selection');
   computerChoiceIcon.classList.add('transform-computer-icon');
+
+  computerChoiceIcon.addEventListener('transitionend', () => {
+    computerChoiceIcon.classList.remove('transform-computer-icon');
+    updateComputerIconImage();
+  });
   // Player must make selection
   if (playerSelection === undefined) {
     pushAnnouncement('Make a selection before shooting!');
@@ -91,18 +95,14 @@ function playRound() {
       ++computerScore;
   }
   doEndGame();
+  const playerScoreDisplay = document.querySelectorAll('.player-score p');
+  const computerScoreDisplay = document.querySelectorAll('.computer-score p');
   // Update Scoreboards
   playerScoreDisplay.forEach((item) => (item.textContent = `${playerScore}`));
   computerScoreDisplay.forEach(
     (item) => (item.textContent = `${computerScore}`)
   );
 }
-
-// Remove classList on transitionend and update Icon image
-computerChoiceIcon.addEventListener('transitionend', () => {
-  computerChoiceIcon.classList.remove('transform-computer-icon');
-  updateComputerIconImage();
-});
 
 function announceWinner() {
   if (playerScore === 0) {
