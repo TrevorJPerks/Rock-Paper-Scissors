@@ -121,22 +121,23 @@ function playRound() {
       pushAnnouncement('Computer Scored. Scissors beats Paper!');
       ++computerScore;
   }
-  doEndGame();
   updateScoreBoards();
+  //Check score and end the game if score = 5
+  if (computerScore === 5 || playerScore === 5) {
+    doEndGame();
+  }
 }
 
-//Check score and end the game if score = 5
+// Disable player interaction, and reveal playAgainButton
 function doEndGame() {
   const playAgainButton = document.querySelector('.playagain-button');
   const playerSelectionContainer = document.querySelector(
     '.player-selection-container'
   );
-  // when either score = 5, Hide some elements, and reveal playAgainButton
-  if (computerScore === 5 || playerScore === 5) {
-    playAgainButton.style.transform = 'scale(1)';
-    playerSelectionContainer.classList.add('disable-clicking');
-    announceWinner();
-  }
+  playAgainButton.style.transform = 'scale(1)';
+  playerSelectionContainer.classList.add('disable-clicking');
+  announceWinner();
+  //Give playAgainButton purpose
   playAgainButton.addEventListener('click', () => {
     setTimeout(refreshPage, 400);
   });
