@@ -9,7 +9,7 @@ let playerSelection;
 
 // Get Computer's Selection
 function getComputerChoice() {
-  let computerChoices = ['rock', 'paper', 'scissors'];
+  const computerChoices = ['rock', 'paper', 'scissors'];
   const randomNumGen = Math.floor(Math.random() * 3);
   computerSelection = computerChoices[randomNumGen];
 }
@@ -109,6 +109,10 @@ function announceWinner() {
   }
 }
 
+function refreshPage() {
+  window.location.reload();
+}
+
 //Check score and end the game if score = 5
 function doEndGame() {
   const playAgainButton = document.querySelector('.playagain-button');
@@ -119,11 +123,6 @@ function doEndGame() {
   const playerSelectionContainer = document.querySelector(
     '.player-selection-container'
   );
-
-  function refreshPage() {
-    window.location.reload();
-  }
-
   // when either score = 5, Hide some elements, and reveal playAgainButton
   if (computerScore === 5 || playerScore === 5) {
     computerIcon.classList.add('hidden');
