@@ -4,11 +4,40 @@ function pushAnnouncement(str) {
 }
 
 // Keep track of Selections
-let computerSelection;
 let playerSelection;
+let computerSelection;
+
+// Create a NodeList containing every div with the class of custombutton-player
+const playerChoices = document.querySelectorAll('.custombutton-player');
+
+// Iterrate over every node in playerChoices and add a click EventListener
+playerChoices.forEach(function (item) {
+  item.addEventListener('click', function () {
+    //On Click, Iterrate over every node in the NodeList and set styles to default
+    playerChoices.forEach(function (item) {
+      item.style.borderColor = 'hsl(0, 0%, 40%)';
+      item.style.transform = 'scale(1)';
+    });
+    // Update style of the node that is clicked
+    item.style.transform = 'scale(1.1)';
+    item.style.borderColor = 'hsla(120, 44%, 49%, 0.856)';
+    // Update playerSelection
+    if (item.classList.contains('player-rock')) {
+      playerSelection = 'rock';
+    }
+    if (item.classList.contains('player-paper')) {
+      playerSelection = 'paper';
+    }
+    if (item.classList.contains('player-scissors')) {
+      playerSelection = 'scissors';
+    }
+    //playRound
+    playRound();
+  });
+});
 
 // Get Computer's Selection
-function getComputerChoice() {
+function getComputerSelection() {
   const computerChoices = ['rock', 'paper', 'scissors'];
   const randomNumGen = Math.floor(Math.random() * 3);
   computerSelection = computerChoices[randomNumGen];
@@ -31,13 +60,24 @@ function updateComputerIconImage() {
   }
 }
 
-// score variables
+//Score variables
 let playerScore = 0;
 let computerScore = 0;
 
-// Compare playerSelection and computerSelection to determine round winner. Increment Score.
+function updateScoreBoards() {
+  //Score Elements
+  const playerScoreDisplay = document.querySelectorAll('.player-score p');
+  const computerScoreDisplay = document.querySelectorAll('.computer-score p');
+  // Update Scoreboards
+  playerScoreDisplay.forEach((item) => (item.textContent = `${playerScore}`));
+  computerScoreDisplay.forEach(
+    (item) => (item.textContent = `${computerScore}`)
+  );
+}
+
+// Determine round winner. Increment Score.
 function playRound() {
-  getComputerChoice();
+  getComputerSelection();
   // Do a little animation on the computerChoiceIcon
   const computerChoiceIcon = document.querySelector('.computer-selection');
   computerChoiceIcon.classList.add('transform-computer-icon');
@@ -59,38 +99,31 @@ function playRound() {
   //Announce round winner, and incement score based on combinedSelections
   switch (combinedSelections) {
     case 'rock.scissors':
-      pushAnnouncement('You scored! Rock beats Scissors!');
+      pushAnnouncement('You scored. Rock beats Scissors!');
       ++playerScore;
       break;
     case 'paper.rock':
-      pushAnnouncement('You scored! Scissors beats Paper!');
+      pushAnnouncement('You scored. Scissors beats Paper!');
       ++playerScore;
       break;
     case 'scissors.paper':
-      pushAnnouncement('You scored! Scissors beats Paper!');
+      pushAnnouncement('You scored. Scissors beats Paper!');
       ++playerScore;
       break;
     case 'scissors.rock':
-      pushAnnouncement('Computer Scored! Rock beats Scissors!');
+      pushAnnouncement('Computer Scored. Rock beats Scissors!');
       ++computerScore;
       break;
     case 'rock.paper':
-      pushAnnouncement('Computer Scored! Paper beats Rock!');
+      pushAnnouncement('Computer Scored. Paper beats Rock!');
       ++computerScore;
       break;
     case 'paper.scissors':
-      pushAnnouncement('Computer Scored! Scissors beats Paper!');
+      pushAnnouncement('Computer Scored. Scissors beats Paper!');
       ++computerScore;
   }
   doEndGame();
-  //Score Elements
-  const playerScoreDisplay = document.querySelectorAll('.player-score p');
-  const computerScoreDisplay = document.querySelectorAll('.computer-score p');
-  // Update Scoreboards
-  playerScoreDisplay.forEach((item) => (item.textContent = `${playerScore}`));
-  computerScoreDisplay.forEach(
-    (item) => (item.textContent = `${computerScore}`)
-  );
+  updateScoreBoards();
 }
 
 function announceWinner() {
@@ -123,32 +156,3 @@ function doEndGame() {
     setTimeout(refreshPage, 400);
   });
 }
-
-// Create a NodeList containing every div with the class of custombutton-player
-const playerChoices = document.querySelectorAll('.custombutton-player');
-
-// Iterrate over every node in the NodeList and add a click EventListener
-playerChoices.forEach(function (item) {
-  item.addEventListener('click', function () {
-    //On Click, Iterrate over every node in the NodeList and set styles to default
-    playerChoices.forEach(function (item) {
-      item.style.borderColor = 'hsl(0, 0%, 40%)';
-      item.style.transform = 'scale(1)';
-    });
-    // Update style of the node that is clicked
-    item.style.transform = 'scale(1.1)';
-    item.style.borderColor = 'hsla(120, 44%, 49%, 0.856)';
-    // Update playerSelection
-    if (item.classList.contains('player-rock')) {
-      playerSelection = 'rock';
-    }
-    if (item.classList.contains('player-paper')) {
-      playerSelection = 'paper';
-    }
-    if (item.classList.contains('player-scissors')) {
-      playerSelection = 'scissors';
-    }
-    //playRound
-    playRound();
-  });
-});
