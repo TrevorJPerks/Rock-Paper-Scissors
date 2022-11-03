@@ -50,6 +50,10 @@ p {
   font-size: 24px;
 }
 
+.announcement .playerColor {
+  color: hsl(180, 36%, 82%);
+}
+
 .score-computerselect-container {
   display: flex;
   justify-content: space-evenly;
