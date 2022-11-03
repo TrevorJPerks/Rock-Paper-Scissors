@@ -3,6 +3,7 @@
   padding: 0;
   box-sizing: border-box;
   font-family: 'Secular One', sans-serif;
+  /* No dragging, highlighting, or tap zooming */
   -webkit-user-drag: none;
   user-select: none;
   -moz-user-select: none;
@@ -31,13 +32,13 @@ p {
 .game-container {
   display: flex;
   flex-direction: column;
+  justify-content: flex-end;
   text-align: center;
   width: 400px;
   border-radius: 10px;
   border: 3px double #ff32ff;
   background-color: hsl(60, 90%, 92%);
   box-shadow: 10px 10px 14px -9px rgba(0, 0, 0, 0.42);
-  transition: all 0.5s ease;
 }
 
 .announcement {
@@ -51,7 +52,7 @@ p {
 
 .score-computerselect-container {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-evenly;
   align-items: center;
   /* border: 3px solid firebrick; */
 }
@@ -89,13 +90,13 @@ img {
 
 button {
   align-self: center;
-  width: 100px;
-  height: 36px;
+  width: 300px;
+  height: 100px;
   border: none;
-  font-size: 18px;
+  font-size: 32px;
   background-color: hsla(120, 46%, 60%, 0.856);
   color: white;
-  border-radius: 16px;
+  border-radius: 10px;
   margin: 50px 0px 30px 0px;
   box-shadow: 10px 10px 14px -9px rgba(0, 0, 0, 0.42);
   -webkit-box-shadow: 10px 10px 14px -9px rgba(0, 0, 0, 0.42);
@@ -107,8 +108,9 @@ button:hover {
 }
 
 .playagain-button {
-  width: 150px;
-  height: 35px;
+  transform: scale(0);
+  position: absolute;
+  transition: all 0.5s ease;
 }
 
 /* JS Transforn Rulesets */
@@ -118,4 +120,10 @@ button:hover {
 
 .transform-computer-icon {
   transform: rotate(360deg) scale(0.1);
+}
+
+.hidden {
+  transition: all 0.5s ease;
+  transform: scale(0);
+  /* display: none; */
 }
