@@ -3,6 +3,7 @@ function pushAnnouncement(str) {
   announcementText.textContent = str;
 }
 
+// Keep track of Selections
 let computerSelection;
 let playerSelection;
 
@@ -36,7 +37,6 @@ let computerScore = 0;
 
 // Compare playerSelection and computerSelection to determine round winner. Increment Score.
 function playRound() {
-  // Do Computer Choice RNG
   getComputerChoice();
   // Do a little animation on the computerChoiceIcon
   const computerChoiceIcon = document.querySelector('.computer-selection');
@@ -46,15 +46,17 @@ function playRound() {
     computerChoiceIcon.classList.remove('transform-computer-icon');
     updateComputerIconImage();
   });
+
   // Tie condition
   if (playerSelection === computerSelection) {
     pushAnnouncement(`It is a tie! You both chose ${playerSelection}!`);
     return;
   }
+
   //Combine playerSelection and computerSelection into a single value.
   const combinedSelections = playerSelection + '.' + computerSelection;
 
-  // Determine, announce round winner, and incement score based on combinedSelections
+  //Announce round winner, and incement score based on combinedSelections
   switch (combinedSelections) {
     case 'rock.scissors':
       pushAnnouncement('You win! Rock beats Scissors!');
@@ -117,6 +119,12 @@ function doEndGame() {
   const playerSelectionContainer = document.querySelector(
     '.player-selection-container'
   );
+
+  function refreshPage() {
+    window.location.reload();
+  }
+
+  // when either score = 5, Hide some elements, and reveal playAgainButton
   if (computerScore === 5 || playerScore === 5) {
     computerIcon.classList.add('hidden');
     playerSelectionContainer.classList.add('hidden');
@@ -127,10 +135,6 @@ function doEndGame() {
   playAgainButton.addEventListener('click', () => {
     setTimeout(refreshPage, 400);
   });
-}
-
-function refreshPage() {
-  window.location.reload();
 }
 
 // Create a NodeList containing every div with the class of custombutton-player
@@ -160,8 +164,4 @@ playerChoices.forEach(function (item) {
     //playRound
     playRound();
   });
-});
-
-playAgainButton.addEventListener('click', () => {
-  setTimeout(refreshPage, 400);
 });
