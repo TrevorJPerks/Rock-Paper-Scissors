@@ -89,6 +89,7 @@ function playRound() {
       ++computerScore;
   }
   doEndGame();
+  //Score Elements
   const playerScoreDisplay = document.querySelectorAll('.player-score p');
   const computerScoreDisplay = document.querySelectorAll('.computer-score p');
   // Update Scoreboards
@@ -116,7 +117,18 @@ function announceWinner() {
 
 //Check score and end the game if score = 5
 function doEndGame() {
+  const computerIcon = document.querySelector('.computer-selection');
+  const scoreContainer = document.querySelector(
+    '.score-computerselect-container'
+  );
+  const playerSelectionContainer = document.querySelector(
+    '.player-selection-container'
+  );
   if (computerScore === 5 || playerScore === 5) {
+    computerIcon.classList.add('hidden');
+    playerSelectionContainer.classList.add('hidden');
+    playAgainButton.style.transform = 'scale(1)';
+    computerIcon.style.display = 'none';
     announceWinner();
   }
 }
