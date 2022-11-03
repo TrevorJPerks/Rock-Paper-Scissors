@@ -95,6 +95,10 @@ function playRound() {
       ++computerScore;
   }
   doEndGame();
+  playerScoreDisplay.forEach((item) => (item.textContent = `${playerScore}`));
+  computerScoreDisplay.forEach(
+    (item) => (item.textContent = `${computerScore}`)
+  );
 }
 
 // Remove classList on transitionend and update Icon image
@@ -132,12 +136,7 @@ function refreshPage() {
   window.location.reload();
 }
 
-shootButton.addEventListener('click', () => {
-  playerScoreDisplay.forEach((item) => (item.textContent = `${playerScore}`));
-  computerScoreDisplay.forEach(
-    (item) => (item.textContent = `${computerScore}`)
-  );
-});
+shootButton.addEventListener('click', () => {});
 
 // Create a NodeList containing every div with the class of custombutton-player
 const playerChoices = document.querySelectorAll('.custombutton-player');
