@@ -24,33 +24,6 @@ function announcement(str) {
 let computerSelection;
 let playerSelection;
 
-// Create a NodeList containing every div with the class of custombutton-player
-const playerChoices = document.querySelectorAll('.custombutton-player');
-
-// Iterrate over every node in the NodeList and add a click EventListener
-playerChoices.forEach(function (item) {
-  item.addEventListener('click', function () {
-    //On Click, Iterrate over every node in the NodeList and set styles to default
-    playerChoices.forEach(function (item) {
-      item.style.borderColor = 'hsl(0, 0%, 40%)';
-      item.style.transform = 'scale(1)';
-    });
-    // Update style of the node that is clicked
-    item.style.transform = 'scale(1.1)';
-    item.style.borderColor = 'hsla(120, 44%, 49%, 0.856)';
-    // Update playerSelection
-    if (item.classList.contains('player-rock')) {
-      playerSelection = 'rock';
-    }
-    if (item.classList.contains('player-paper')) {
-      playerSelection = 'paper';
-    }
-    if (item.classList.contains('player-scissors')) {
-      playerSelection = 'scissors';
-    }
-  });
-});
-
 // Get Computer's Selection
 function getComputerChoice() {
   let computerChoices = ['rock', 'paper', 'scissors'];
@@ -119,6 +92,7 @@ function playRound() {
       announcement('You lose! Scissors beats Paper!');
       ++computerScore;
   }
+  doEndGame();
 }
 
 // Computer Icon functions
@@ -152,7 +126,7 @@ function announceWinner() {
 }
 
 //Check score and end the game if score = 5
-function endGame() {
+function doEndGame() {
   if (computerScore === 5 || playerScore === 5) {
     gameScreen.classList.add('hide-gameScreen');
     endGameScreen.classList.add('show-endgameScreen');
@@ -165,13 +139,41 @@ function refreshPage() {
 }
 
 shootButton.addEventListener('click', () => {
-  playRound();
   computerChoiceIconTransform();
-  endGame();
+  doEndGame();
   playerScoreDisplay.forEach((item) => (item.textContent = `${playerScore}`));
   computerScoreDisplay.forEach(
     (item) => (item.textContent = `${computerScore}`)
   );
+});
+
+// Create a NodeList containing every div with the class of custombutton-player
+const playerChoices = document.querySelectorAll('.custombutton-player');
+
+// Iterrate over every node in the NodeList and add a click EventListener
+playerChoices.forEach(function (item) {
+  item.addEventListener('click', function () {
+    //On Click, Iterrate over every node in the NodeList and set styles to default
+    playerChoices.forEach(function (item) {
+      item.style.borderColor = 'hsl(0, 0%, 40%)';
+      item.style.transform = 'scale(1)';
+    });
+    // Update style of the node that is clicked
+    item.style.transform = 'scale(1.1)';
+    item.style.borderColor = 'hsla(120, 44%, 49%, 0.856)';
+    // Update playerSelection
+    if (item.classList.contains('player-rock')) {
+      playerSelection = 'rock';
+    }
+    if (item.classList.contains('player-paper')) {
+      playerSelection = 'paper';
+    }
+    if (item.classList.contains('player-scissors')) {
+      playerSelection = 'scissors';
+    }
+    //playRound
+    playRound();
+  });
 });
 
 playAgainButton.addEventListener('click', () => {
