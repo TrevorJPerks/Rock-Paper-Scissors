@@ -59,27 +59,27 @@ function playRound() {
   //Announce round winner, and incement score based on combinedSelections
   switch (combinedSelections) {
     case 'rock.scissors':
-      pushAnnouncement('You win! Rock beats Scissors!');
+      pushAnnouncement('You scored! Rock beats Scissors!');
       ++playerScore;
       break;
     case 'paper.rock':
-      pushAnnouncement('You win! Scissors beats Paper!');
+      pushAnnouncement('You scored! Scissors beats Paper!');
       ++playerScore;
       break;
     case 'scissors.paper':
-      pushAnnouncement('You win! Scissors beats Paper!');
+      pushAnnouncement('You scored! Scissors beats Paper!');
       ++playerScore;
       break;
     case 'scissors.rock':
-      pushAnnouncement('You lose! Rock beats Scissors!');
+      pushAnnouncement('Computer Scored! Rock beats Scissors!');
       ++computerScore;
       break;
     case 'rock.paper':
-      pushAnnouncement('You lose! Paper beats Rock!');
+      pushAnnouncement('Computer Scored! Paper beats Rock!');
       ++computerScore;
       break;
     case 'paper.scissors':
-      pushAnnouncement('You lose! Scissors beats Paper!');
+      pushAnnouncement('Computer Scored! Scissors beats Paper!');
       ++computerScore;
   }
   doEndGame();
@@ -94,18 +94,12 @@ function playRound() {
 }
 
 function announceWinner() {
-  if (playerScore === 0) {
-    pushAnnouncement('The computer skunked you!');
-    return;
-  }
-  if (computerScore === 0) {
-    pushAnnouncement('You skunked the computer!');
-    return;
-  }
+  const compWinnerText = document.querySelector('.computer-score .winner-text');
+  const playerWinnerText = document.querySelector('.player-score .winner-text');
   if (computerScore > playerScore) {
-    pushAnnouncement('The computer beat you!');
+    compWinnerText.style.opacity = '100';
   } else {
-    pushAnnouncement('You beat the computer!');
+    playerWinnerText.style.opacity = '100';
   }
 }
 
