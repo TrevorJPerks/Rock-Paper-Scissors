@@ -126,20 +126,6 @@ function playRound() {
   updateScoreBoards();
 }
 
-function announceWinner() {
-  const compWinnerText = document.querySelector('.computer-score .winner-text');
-  const playerWinnerText = document.querySelector('.player-score .winner-text');
-  if (computerScore > playerScore) {
-    compWinnerText.style.opacity = '100';
-  } else {
-    playerWinnerText.style.opacity = '100';
-  }
-}
-
-function refreshPage() {
-  window.location.reload();
-}
-
 //Check score and end the game if score = 5
 function doEndGame() {
   const playAgainButton = document.querySelector('.playagain-button');
@@ -155,4 +141,18 @@ function doEndGame() {
   playAgainButton.addEventListener('click', () => {
     setTimeout(refreshPage, 400);
   });
+}
+
+function announceWinner() {
+  const compWinnerText = document.querySelector('.computer-score .winner-text');
+  const playerWinnerText = document.querySelector('.player-score .winner-text');
+  if (computerScore > playerScore) {
+    compWinnerText.style.opacity = '100';
+  } else {
+    playerWinnerText.style.opacity = '100';
+  }
+}
+
+function refreshPage() {
+  window.location.reload();
 }
