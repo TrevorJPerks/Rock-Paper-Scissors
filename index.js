@@ -1,11 +1,5 @@
-// Game screens
-const gameScreen = document.querySelector('.game-container');
-const endGameScreen = document.querySelector('.endgame-container');
-
 //Game elements
 const playAgainButton = document.querySelector('.playagain-button');
-
-//Score Display
 
 function pushAnnouncement(str) {
   const announcementText = document.querySelector('.announcement');
@@ -123,8 +117,6 @@ function announceWinner() {
 //Check score and end the game if score = 5
 function doEndGame() {
   if (computerScore === 5 || playerScore === 5) {
-    gameScreen.classList.add('hide-gameScreen');
-    endGameScreen.classList.add('show-endgameScreen');
     announceWinner();
   }
 }
@@ -163,6 +155,5 @@ playerChoices.forEach(function (item) {
 });
 
 playAgainButton.addEventListener('click', () => {
-  endGameScreen.classList.remove('show-endgameScreen');
   setTimeout(refreshPage, 400);
 });
