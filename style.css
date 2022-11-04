@@ -36,9 +36,9 @@ p {
   text-align: center;
   width: 400px;
   border-radius: 10px;
-  border: 3px double #ff32ff;
+  border: 3px double hsl(300, 100%, 60%);
   background-color: hsl(60, 90%, 92%);
-  box-shadow: 10px 10px 14px -9px rgba(0, 0, 0, 0.42);
+  box-shadow: 10px 10px 14px -9px hsla(0, 0%, 0%, 0.42);
 }
 
 .announcement {
@@ -75,7 +75,7 @@ img {
   height: 100px;
   border-radius: 5%;
   border: 6px dashed hsl(0, 0%, 40%);
-  box-shadow: 10px 10px 14px -9px rgba(0, 0, 0, 0.42);
+  box-shadow: 10px 10px 14px -9px hsla(0, 0%, 0%, 0.42);
 }
 
 .playerchoice-icon {
@@ -94,26 +94,26 @@ img {
   height: 50px;
   border: none;
   font-size: 32px;
-  background-color: hsla(120, 46%, 60%, 0.856);
+  background-color: hsl(120, 46%, 60%);
   color: white;
   border-radius: 10px;
   margin: 10px 0px 20px 0px;
-  box-shadow: 10px 10px 14px -9px rgba(0, 0, 0, 0.42);
-  -webkit-box-shadow: 10px 10px 14px -9px rgba(0, 0, 0, 0.42);
-  -moz-box-shadow: 10px 10px 14px -9px rgba(0, 0, 0, 0.42);
+  box-shadow: 10px 10px 14px -9px hsla(0, 0%, 0%, 0.42);
+  -webkit-box-shadow: 10px 10px 14px -9px hsla(0, 0%, 0%, 0.42);
+  -moz-box-shadow: 10px 10px 14px -9px hsla(0, 0%, 0%, 0.42);
   /* JS Stuff */
   transform: scale(0);
   transition: all 0.4s ease;
 }
 
 .playagain-button:hover {
-  background-color: hsla(120, 46%, 43%, 0.856);
+  background-color: hsl(120, 46%, 43%);
 }
 
 .winner-text {
   transition: all 0.4s ease;
   font-size: 20px;
-  color: rgb(0, 239, 0);
+  color: hsl(120, 100%, 47%);
 }
 
 /* JS Transform Rulesets */
