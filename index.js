@@ -10,7 +10,7 @@ let computerSelection;
 // Create a NodeList containing every div with the class of playerchoice-icon
 const playerChoiceIcons = document.querySelectorAll('.playerchoice-icon');
 
-// Iterate over every node in playerChoices and add a click EventListener
+// Iterate over every node in playerChoiceIcons and add a click EventListener
 playerChoiceIcons.forEach(function (item) {
   item.addEventListener('click', function () {
     //On Click, Iterate over every node in the NodeList and set styles to default
@@ -18,7 +18,7 @@ playerChoiceIcons.forEach(function (item) {
       item.style.borderColor = 'hsl(0, 0%, 40%)';
       item.style.transform = 'scale(1)';
     });
-    // Update style of the node that is clicked
+    // Change style of the node that is clicked
     item.style.transform = 'scale(1.1)';
     item.style.borderColor = 'hsla(120, 44%, 49%, 0.856)';
     // Update playerSelection
@@ -40,6 +40,7 @@ function getComputerSelection() {
   const computerChoices = ['rock', 'paper', 'scissors'];
   const randomNumGen = Math.floor(Math.random() * 3);
   computerSelection = computerChoices[randomNumGen];
+
   updateComputerSelectionIcon();
 }
 
@@ -48,10 +49,10 @@ function updateComputerSelectionIcon() {
     '.computerselection-icon'
   );
   // Do an animation on computerSelectionIcon
-  computerSelectionIcon.classList.add('transform-computer-icon');
+  computerSelectionIcon.classList.add('transform-computerselection-icon');
 
   computerSelectionIcon.addEventListener('transitionend', () => {
-    computerSelectionIcon.classList.remove('transform-computer-icon');
+    computerSelectionIcon.classList.remove('transform-computerselection-icon');
 
     updateComputerSelectionImage();
   });
