@@ -133,12 +133,12 @@ function playRound() {
   updateScoreBoards();
   //Check score and end the game if score = 3
   if (computerScore === 3 || playerScore === 3) {
-    toggleWinner();
+    toggleWinnerText();
     togglePlayAgainButton();
   }
 }
 
-function toggleWinner() {
+function toggleWinnerText() {
   const computerWinnerText = document.querySelector(
     '.computer-score .winner-text'
   );
