@@ -8,13 +8,13 @@ let playerSelection;
 let computerSelection;
 
 // Create a NodeList containing every div with the class of custombutton-player
-const playerChoices = document.querySelectorAll('.custombutton-player');
+const playerChoiceIcons = document.querySelectorAll('.custombutton-player');
 
 // Iterate over every node in playerChoices and add a click EventListener
-playerChoices.forEach(function (item) {
+playerChoiceIcons.forEach(function (item) {
   item.addEventListener('click', function () {
     //On Click, Iterate over every node in the NodeList and set styles to default
-    playerChoices.forEach(function (item) {
+    playerChoiceIcons.forEach(function (item) {
       item.style.borderColor = 'hsl(0, 0%, 40%)';
       item.style.transform = 'scale(1)';
     });
@@ -185,7 +185,7 @@ function resetGame() {
   // Reset ComputerIconImage
   updateComputerSelectionImage();
   // Reset PlayerChoices style
-  playerChoices.forEach(function (item) {
+  playerChoiceIcons.forEach(function (item) {
     item.style.borderColor = 'hsl(0, 0%, 40%)';
     item.style.transform = 'scale(1)';
   });
