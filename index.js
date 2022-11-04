@@ -46,10 +46,9 @@ function getComputerSelection() {
 
 // Update Computer Icon
 function updateComputerIcon() {
-  // Do a little animation on computerChoiceIcon
   const computerChoiceIcon = document.querySelector('.computer-selection');
+  // Do a little animation on computerChoiceIcon
   computerChoiceIcon.classList.add('transform-computer-icon');
-
   computerChoiceIcon.addEventListener('transitionend', () => {
     computerChoiceIcon.classList.remove('transform-computer-icon');
 
@@ -128,19 +127,21 @@ function playRound() {
   }
 }
 
-// Disable player interaction, and reveal playAgainButton
 function doEndGame() {
   const playAgainButton = document.querySelector('.playagain-button');
   const playerSelectionContainer = document.querySelector(
     '.player-selection-container'
   );
+  // Reveal PlayAgainButton
   playAgainButton.style.transform = 'scale(1)';
-  playerSelectionContainer.classList.add('disable-clicking');
-  announceWinner();
   //Give playAgainButton purpose
   playAgainButton.addEventListener('click', () => {
     setTimeout(refreshPage, 400);
   });
+  // Disable User interaction on playerSelectionContainer
+  playerSelectionContainer.classList.add('disable-clicking');
+
+  announceWinner();
 }
 
 function announceWinner() {
