@@ -44,7 +44,7 @@ function getComputerSelection() {
   updateComputerSelectionIcon();
 }
 
-// Update Computer Icon
+// Update ComputerSelectionIcon
 function updateComputerSelectionIcon() {
   const computerSelectionIcon = document.querySelector('.computer-selection');
   // Do am animation on computerChoiceIcon
@@ -57,10 +57,10 @@ function updateComputerSelectionIcon() {
   });
 }
 
-// Update ComputerIcon Image
+// Update ComputerSelection Image
 function updateComputerSelectionImage() {
   const computerSelectionImage =
-    document.getElementsByClassName('comp-choice-img')[0];
+    document.getElementsByClassName('comp-selection-img')[0];
 
   switch (computerSelection) {
     case 'undefined':
