@@ -7,8 +7,8 @@ function pushAnnouncement(str) {
 let playerSelection;
 let computerSelection;
 
-// Create a NodeList containing every div with the class of custombutton-player
-const playerChoiceIcons = document.querySelectorAll('.custombutton-player');
+// Create a NodeList containing every div with the class of playerchoice-icon
+const playerChoiceIcons = document.querySelectorAll('.playerchoice-icon');
 
 // Iterate over every node in playerChoices and add a click EventListener
 playerChoiceIcons.forEach(function (item) {
