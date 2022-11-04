@@ -10,10 +10,10 @@ let computerSelection;
 // Create a NodeList containing every div with the class of custombutton-player
 const playerChoices = document.querySelectorAll('.custombutton-player');
 
-// Iterrate over every node in playerChoices and add a click EventListener
+// Iterate over every node in playerChoices and add a click EventListener
 playerChoices.forEach(function (item) {
   item.addEventListener('click', function () {
-    //On Click, Iterrate over every node in the NodeList and set styles to default
+    //On Click, Iterate over every node in the NodeList and set styles to default
     playerChoices.forEach(function (item) {
       item.style.borderColor = 'hsl(0, 0%, 40%)';
       item.style.transform = 'scale(1)';
@@ -36,7 +36,6 @@ playerChoices.forEach(function (item) {
   });
 });
 
-// Get Computer's Selection
 function getComputerSelection() {
   const computerChoices = ['rock', 'paper', 'scissors'];
   const randomNumGen = Math.floor(Math.random() * 3);
@@ -44,10 +43,9 @@ function getComputerSelection() {
   updateComputerSelectionIcon();
 }
 
-// Update ComputerSelectionIcon
 function updateComputerSelectionIcon() {
   const computerSelectionIcon = document.querySelector('.computer-selection');
-  // Do am animation on computerChoiceIcon
+  // Do an animation on computerSelectionIcon
   computerSelectionIcon.classList.add('transform-computer-icon');
 
   computerSelectionIcon.addEventListener('transitionend', () => {
@@ -57,7 +55,6 @@ function updateComputerSelectionIcon() {
   });
 }
 
-// Update ComputerSelection Image
 function updateComputerSelectionImage() {
   const computerSelectionImage =
     document.getElementsByClassName('comp-selection-img')[0];
@@ -100,7 +97,7 @@ function playRound() {
     return;
   }
 
-  //Combine playerSelection and computerSelection into a single value.
+  //Combine playerSelection and computerSelection into a single string.
   const combinedSelections = playerSelection + '.' + computerSelection;
 
   //Announce round winner, and incement score based on combinedSelections
@@ -137,29 +134,6 @@ function playRound() {
   }
 }
 
-function togglePlayAgainButton() {
-  const playAgainButton = document.querySelector('.playagain-button');
-  const playerSelectionContainer = document.querySelector(
-    '.player-selection-container'
-  );
-  // if the Score is reset
-  if (computerScore === 0 && playerScore === 0) {
-    // Set playAgainButton Hidden
-    playAgainButton.style.transform = 'scale(0)';
-    // Enable User interaction on playerSelectionContainer
-    playerSelectionContainer.classList.remove('disable-clicking');
-  } else {
-    // Reveal PlayAgainButton
-    playAgainButton.style.transform = 'scale(1)';
-    // Disable User interaction on playerSelectionContainer
-    playerSelectionContainer.classList.add('disable-clicking');
-    //Give playAgainButton purpose
-    playAgainButton.addEventListener('click', () => {
-      resetGame();
-    });
-  }
-}
-
 function toggleWinner() {
   const compWinnerText = document.querySelector('.computer-score .winner-text');
   const playerWinnerText = document.querySelector('.player-score .winner-text');
@@ -171,6 +145,29 @@ function toggleWinner() {
   if (computerScore === 0 && playerScore === 0) {
     compWinnerText.style.opacity = '0';
     playerWinnerText.style.opacity = '0';
+  }
+}
+
+function togglePlayAgainButton() {
+  const playAgainButton = document.querySelector('.playagain-button');
+  const playerSelectionContainer = document.querySelector(
+    '.player-selection-container'
+  );
+  // if the score has already been reset
+  if (computerScore === 0 && playerScore === 0) {
+    // Hide playAgainButton
+    playAgainButton.style.transform = 'scale(0)';
+    // Enable User interaction on playerSelectionContainer
+    playerSelectionContainer.classList.remove('disable-clicking');
+  } else {
+    // Unhide playAgainButton
+    playAgainButton.style.transform = 'scale(1)';
+    // Disable User interaction on playerSelectionContainer
+    playerSelectionContainer.classList.add('disable-clicking');
+    //Give playAgainButton purpose
+    playAgainButton.addEventListener('click', () => {
+      resetGame();
+    });
   }
 }
 
