@@ -159,13 +159,8 @@ function togglePlayAgainButton() {
   const playerSelectionContainer = document.querySelector(
     '.player-selection-container'
   );
-  // if the score has already been reset
-  if (computerScore === 0 && playerScore === 0) {
-    // Hide playAgainButton
-    playAgainButton.style.transform = 'scale(0)';
-    // Enable User interaction on playerSelectionContainer
-    playerSelectionContainer.classList.remove('disable-clicking');
-  } else {
+  // if the score hasn't been reset
+  if (computerScore > 0 || playerScore > 0) {
     // Unhide playAgainButton
     playAgainButton.style.transform = 'scale(1)';
     // Disable User interaction on playerSelectionContainer
@@ -174,6 +169,11 @@ function togglePlayAgainButton() {
     playAgainButton.addEventListener('click', () => {
       resetGame();
     });
+  } else {
+    // Hide playAgainButton
+    playAgainButton.style.transform = 'scale(0)';
+    // Enable User interaction on playerSelectionContainer
+    playerSelectionContainer.classList.remove('disable-clicking');
   }
 }
 
