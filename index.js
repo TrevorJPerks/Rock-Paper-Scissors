@@ -66,15 +66,20 @@ function updateComputerSelectionImage() {
   switch (computerSelection) {
     case 'undefined':
       computerSelectionImage.src = 'images/blankplaceholder-img.png';
+      computerSelectionImage.alt = 'a blank image used as a placeholder';
       break;
     case 'rock':
       computerSelectionImage.src = 'images/rock-svg.svg';
+      computerSelectionImage.alt = 'a solid black cartoon style closed fist';
       break;
     case 'paper':
       computerSelectionImage.src = 'images/paper-svg.svg';
+      computerSelectionImage.alt = 'a solid black cartoon style open hand';
       break;
     case 'scissors':
       computerSelectionImage.src = 'images/scissors-svg.svg';
+      computerSelectionImage.alt =
+        'a solid black cartoon style hand holding out two fingers';
   }
 }
 
