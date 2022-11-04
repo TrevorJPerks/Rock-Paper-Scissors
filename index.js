@@ -139,15 +139,17 @@ function playRound() {
 }
 
 function toggleWinner() {
-  const compWinnerText = document.querySelector('.computer-score .winner-text');
+  const computerWinnerText = document.querySelector(
+    '.computer-score .winner-text'
+  );
   const playerWinnerText = document.querySelector('.player-score .winner-text');
   if (computerScore > playerScore) {
-    compWinnerText.style.opacity = '100';
+    computerWinnerText.style.opacity = '100';
   } else {
     playerWinnerText.style.opacity = '100';
   }
   if (computerScore === 0 && playerScore === 0) {
-    compWinnerText.style.opacity = '0';
+    computerWinnerText.style.opacity = '0';
     playerWinnerText.style.opacity = '0';
   }
 }
