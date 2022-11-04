@@ -141,10 +141,10 @@ function doEndGame() {
   // Disable User interaction on playerSelectionContainer
   playerSelectionContainer.classList.add('disable-clicking');
 
-  announceWinner();
+  revealWinner();
 }
 
-function announceWinner() {
+function revealWinner() {
   const compWinnerText = document.querySelector('.computer-score .winner-text');
   const playerWinnerText = document.querySelector('.player-score .winner-text');
   if (computerScore > playerScore) {
