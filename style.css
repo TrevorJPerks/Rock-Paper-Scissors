@@ -70,7 +70,7 @@ img {
 }
 
 .custombutton,
-.custombutton-player {
+.playerchoice-icon {
   display: flex;
   justify-content: space-around;
   width: 100px;
@@ -80,7 +80,7 @@ img {
   box-shadow: 10px 10px 14px -9px rgba(0, 0, 0, 0.42);
 }
 
-.custombutton-player {
+.playerchoice-icon {
   background-color: hsl(180, 36%, 82%);
 }
 
