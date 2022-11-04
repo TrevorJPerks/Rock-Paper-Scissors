@@ -195,7 +195,7 @@ function resetGame() {
     item.style.transform = 'scale(1)';
   });
   // Reset Announcement
-  pushAnnouncement('Make a selection. First to 3 wins!');
+  pushAnnouncement('May the odds be ever in your favor.');
   // Hide playAgainButton
   togglePlayAgainButton();
 }
