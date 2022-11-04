@@ -130,8 +130,8 @@ function playRound() {
       ++computerScore;
   }
   updateScoreBoards();
-  //Check score and end the game if score = 5
-  if (computerScore === 5 || playerScore === 5) {
+  //Check score and end the game if score = 3
+  if (computerScore === 3 || playerScore === 3) {
     toggleWinner();
     togglePlayAgainButton();
   }
@@ -193,7 +193,7 @@ function resetGame() {
     item.style.transform = 'scale(1)';
   });
   // Reset Announcement
-  pushAnnouncement('Make a selection. First to 5 wins!');
+  pushAnnouncement('Make a selection. First to 3 wins!');
   // Hide playAgainButton
   togglePlayAgainButton();
 }
