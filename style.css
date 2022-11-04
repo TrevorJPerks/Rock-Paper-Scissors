@@ -114,14 +114,6 @@ img {
   color: rgb(0, 239, 0);
 }
 
-.computer-score .winner-text {
-  opacity: 0;
-}
-
-.player-score .winner-text {
-  opacity: 0;
-}
-
 /* JS Transform Rulesets */
 .computer-selection {
   transition: all 0.1s ease;
@@ -129,6 +121,14 @@ img {
 
 .transform-computer-icon {
   transform: scale(0.1);
+}
+
+.computer-score .winner-text {
+  opacity: 0;
+}
+
+.player-score .winner-text {
+  opacity: 0;
 }
 
 .disable-clicking {
