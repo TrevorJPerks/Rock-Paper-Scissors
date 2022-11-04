@@ -184,7 +184,7 @@ function resetGame() {
   computerScore = 0;
   updateScoreBoards();
   // Toggle Winner text
-  toggleWinner();
+  toggleWinnerText();
   //Reset playerSelection and computerSelection
   playerSelection = 'undefined';
   computerSelection = 'undefined';
