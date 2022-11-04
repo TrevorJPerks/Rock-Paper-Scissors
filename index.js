@@ -111,7 +111,7 @@ function playRound() {
       ++playerScore;
       break;
     case 'paper.rock':
-      pushAnnouncement('You scored. Scissors beats Paper!');
+      pushAnnouncement('You scored. Paper beats Rock!');
       ++playerScore;
       break;
     case 'scissors.paper':
