@@ -69,7 +69,7 @@ img {
   height: auto;
 }
 
-.custombutton,
+.computerselection-icon,
 .playerchoice-icon {
   display: flex;
   justify-content: space-around;
@@ -84,8 +84,9 @@ img {
   background-color: hsl(180, 36%, 82%);
 }
 
-.custombutton {
+.computerselection-icon {
   background-color: hsl(289, 100%, 85%);
+  transition: all 0.1s ease;
 }
 
 .playagain-button {
@@ -116,10 +117,6 @@ img {
 }
 
 /* JS Transform Rulesets */
-.computer-selection {
-  transition: all 0.1s ease;
-}
-
 .transform-computer-icon {
   transform: scale(0.1);
 }
