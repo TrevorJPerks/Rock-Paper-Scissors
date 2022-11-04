@@ -31,7 +31,7 @@ playerChoices.forEach(function (item) {
     if (item.classList.contains('player-scissors')) {
       playerSelection = 'scissors';
     }
-    //playRound
+
     playRound();
   });
 });
@@ -41,39 +41,39 @@ function getComputerSelection() {
   const computerChoices = ['rock', 'paper', 'scissors'];
   const randomNumGen = Math.floor(Math.random() * 3);
   computerSelection = computerChoices[randomNumGen];
-  updateComputerIcon();
+  updateComputerSelectionIcon();
 }
 
 // Update Computer Icon
-function updateComputerIcon() {
-  const computerChoiceIcon = document.querySelector('.computer-selection');
-  // Do a little animation on computerChoiceIcon
-  computerChoiceIcon.classList.add('transform-computer-icon');
+function updateComputerSelectionIcon() {
+  const computerSelectionIcon = document.querySelector('.computer-selection');
+  // Do am animation on computerChoiceIcon
+  computerSelectionIcon.classList.add('transform-computer-icon');
 
-  computerChoiceIcon.addEventListener('transitionend', () => {
-    computerChoiceIcon.classList.remove('transform-computer-icon');
+  computerSelectionIcon.addEventListener('transitionend', () => {
+    computerSelectionIcon.classList.remove('transform-computer-icon');
 
-    updateComputerIconImage();
+    updateComputerSelectionImage();
   });
 }
 
 // Update ComputerIcon Image
-function updateComputerIconImage() {
-  const computerChoiceImage =
+function updateComputerSelectionImage() {
+  const computerSelectionImage =
     document.getElementsByClassName('comp-choice-img')[0];
 
   switch (computerSelection) {
     case 'undefined':
-      computerChoiceImage.src = 'images/blankplaceholder-img.png';
+      computerSelectionImage.src = 'images/blankplaceholder-img.png';
       break;
     case 'rock':
-      computerChoiceImage.src = 'images/rock-svg.svg';
+      computerSelectionImage.src = 'images/rock-svg.svg';
       break;
     case 'paper':
-      computerChoiceImage.src = 'images/paper-svg.svg';
+      computerSelectionImage.src = 'images/paper-svg.svg';
       break;
     case 'scissors':
-      computerChoiceImage.src = 'images/scissors-svg.svg';
+      computerSelectionImage.src = 'images/scissors-svg.svg';
   }
 }
 
@@ -186,7 +186,7 @@ function resetGame() {
   playerSelection = 'undefined';
   computerSelection = 'undefined';
   // Reset ComputerIconImage
-  updateComputerIconImage();
+  updateComputerSelectionImage();
   // Reset PlayerChoices style
   playerChoices.forEach(function (item) {
     item.style.borderColor = 'hsl(0, 0%, 40%)';
@@ -194,7 +194,7 @@ function resetGame() {
   });
   // Reset Announcement
   pushAnnouncement('Make a selection. First to 5 wins!');
-  //
+  // Hide playAgainButton
   togglePlayAgainButton();
 }
 
