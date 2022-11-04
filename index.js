@@ -44,7 +44,9 @@ function getComputerSelection() {
 }
 
 function updateComputerSelectionIcon() {
-  const computerSelectionIcon = document.querySelector('.computer-selection');
+  const computerSelectionIcon = document.querySelector(
+    '.computerselection-icon'
+  );
   // Do an animation on computerSelectionIcon
   computerSelectionIcon.classList.add('transform-computer-icon');
 
