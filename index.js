@@ -49,23 +49,32 @@ function updateComputerIcon() {
   const computerChoiceIcon = document.querySelector('.computer-selection');
   // Do a little animation on computerChoiceIcon
   computerChoiceIcon.classList.add('transform-computer-icon');
+
   computerChoiceIcon.addEventListener('transitionend', () => {
     computerChoiceIcon.classList.remove('transform-computer-icon');
 
-    // Update ComputerIcon Image
-    const computerChoiceImage =
-      document.getElementsByClassName('comp-choice-img')[0];
-    switch (computerSelection) {
-      case 'rock':
-        computerChoiceImage.src = 'images/rock-svg.svg';
-        break;
-      case 'paper':
-        computerChoiceImage.src = 'images/paper-svg.svg';
-        break;
-      case 'scissors':
-        computerChoiceImage.src = 'images/scissors-svg.svg';
-    }
+    updateComputerIconImage();
   });
+}
+
+// Update ComputerIcon Image
+function updateComputerIconImage() {
+  const computerChoiceImage =
+    document.getElementsByClassName('comp-choice-img')[0];
+
+  switch (computerSelection) {
+    case 'undefined':
+      computerChoiceImage.src = 'images/blankplaceholder-img.png';
+      break;
+    case 'rock':
+      computerChoiceImage.src = 'images/rock-svg.svg';
+      break;
+    case 'paper':
+      computerChoiceImage.src = 'images/paper-svg.svg';
+      break;
+    case 'scissors':
+      computerChoiceImage.src = 'images/scissors-svg.svg';
+  }
 }
 
 //Score variables
@@ -123,28 +132,35 @@ function playRound() {
   updateScoreBoards();
   //Check score and end the game if score = 5
   if (computerScore === 5 || playerScore === 5) {
-    doEndGame();
+    toggleWinner();
+    togglePlayAgainButton();
   }
 }
 
-function doEndGame() {
+function togglePlayAgainButton() {
   const playAgainButton = document.querySelector('.playagain-button');
   const playerSelectionContainer = document.querySelector(
     '.player-selection-container'
   );
-  // Reveal PlayAgainButton
-  playAgainButton.style.transform = 'scale(1)';
-  //Give playAgainButton purpose
-  playAgainButton.addEventListener('click', () => {
-    setTimeout(refreshPage, 400);
-  });
-  // Disable User interaction on playerSelectionContainer
-  playerSelectionContainer.classList.add('disable-clicking');
-
-  revealWinner();
+  // if the Score is reset
+  if (computerScore === 0 && playerScore === 0) {
+    // Set playAgainButton Hidden
+    playAgainButton.style.transform = 'scale(0)';
+    // Enable User interaction on playerSelectionContainer
+    playerSelectionContainer.classList.remove('disable-clicking');
+  } else {
+    // Reveal PlayAgainButton
+    playAgainButton.style.transform = 'scale(1)';
+    // Disable User interaction on playerSelectionContainer
+    playerSelectionContainer.classList.add('disable-clicking');
+    //Give playAgainButton purpose
+    playAgainButton.addEventListener('click', () => {
+      resetGame();
+    });
+  }
 }
 
-function revealWinner() {
+function toggleWinner() {
   const compWinnerText = document.querySelector('.computer-score .winner-text');
   const playerWinnerText = document.querySelector('.player-score .winner-text');
   if (computerScore > playerScore) {
@@ -152,8 +168,31 @@ function revealWinner() {
   } else {
     playerWinnerText.style.opacity = '100';
   }
+  if (computerScore === 0 && playerScore === 0) {
+    compWinnerText.style.opacity = '0';
+    playerWinnerText.style.opacity = '0';
+  }
 }
 
-function refreshPage() {
-  window.location.reload();
+function resetGame() {
+  // Set Score back to 0
+  playerScore = 0;
+  computerScore = 0;
+  updateScoreBoards();
+  // Toggle Winner text
+  toggleWinner();
+  //Reset playerSelection and computerSelection
+  playerSelection = 'undefined';
+  computerSelection = 'undefined';
+  // Reset ComputerIconImage
+  updateComputerIconImage();
+  // Reset PlayerChoices style
+  playerChoices.forEach(function (item) {
+    item.style.borderColor = 'hsl(0, 0%, 40%)';
+    item.style.transform = 'scale(1)';
+  });
+  // Reset Announcement
+  pushAnnouncement('Make a selection. First to 5 wins!');
+  //
+  togglePlayAgainButton();
 }
