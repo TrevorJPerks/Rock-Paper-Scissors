@@ -86,7 +86,7 @@ img {
 
 .computerselection-icon {
   background-color: hsl(289, 100%, 85%);
-  transition: all 0.2s ease;
+  transition: all 0.1s ease;
 }
 
 .playagain-button {
