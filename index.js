@@ -59,8 +59,9 @@ function updateComputerSelectionIcon() {
 }
 
 function updateComputerSelectionImage() {
-  const computerSelectionImage =
-    document.getElementsByClassName('comp-selection-img')[0];
+  const computerSelectionImage = document.getElementsByClassName(
+    'computerselection-img'
+  )[0];
 
   switch (computerSelection) {
     case 'undefined':
