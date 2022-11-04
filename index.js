@@ -175,6 +175,7 @@ function toggleWinner() {
 }
 
 function resetGame() {
+  animateGameContainer();
   // Set Score back to 0
   playerScore = 0;
   computerScore = 0;
@@ -195,4 +196,13 @@ function resetGame() {
   pushAnnouncement('Make a selection. First to 5 wins!');
   //
   togglePlayAgainButton();
+}
+
+function animateGameContainer() {
+  const gameContainer = document.querySelector('.game-container');
+  gameContainer.classList.add('game-container-animation');
+  //
+  gameContainer.addEventListener('transitionend', () => {
+    gameContainer.classList.remove('game-container-animation');
+  });
 }
