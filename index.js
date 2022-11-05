@@ -100,39 +100,27 @@ function updateScoreBoards() {
 function playRound() {
   getComputerSelection();
 
-  // Tie condition
-  if (playerSelection === computerSelection) {
-    pushAnnouncement(`It is a tie! You both chose ${playerSelection}!`);
-    return;
-  }
-
-  //Combine playerSelection and computerSelection into a single string.
-  const combinedSelections = playerSelection + '.' + computerSelection;
-
-  //Announce round winner, and incement score based on combinedSelections
-  switch (combinedSelections) {
+  //Announce round winner, and incement score based on Selections
+  switch (playerSelection + '.' + computerSelection) {
+    case 'rock.rock':
+    case 'paper.paper':
+    case 'scissors.scissors':
+      pushAnnouncement(`It is a tie! You both chose ${playerSelection}!`);
+      break;
     case 'rock.scissors':
-      pushAnnouncement('You scored. Rock beats Scissors!');
-      ++playerScore;
-      break;
     case 'paper.rock':
-      pushAnnouncement('You scored. Paper beats Rock!');
-      ++playerScore;
-      break;
     case 'scissors.paper':
-      pushAnnouncement('You scored. Scissors beats Paper!');
+      pushAnnouncement(
+        `You scored. ${playerSelection} beats ${computerSelection}!`
+      );
       ++playerScore;
       break;
     case 'scissors.rock':
-      pushAnnouncement('Computer Scored. Rock beats Scissors!');
-      ++computerScore;
-      break;
     case 'rock.paper':
-      pushAnnouncement('Computer Scored. Paper beats Rock!');
-      ++computerScore;
-      break;
     case 'paper.scissors':
-      pushAnnouncement('Computer Scored. Scissors beats Paper!');
+      pushAnnouncement(
+        `Computer Scored. ${computerSelection} beats ${playerSelection}!`
+      );
       ++computerScore;
   }
   updateScoreBoards();
