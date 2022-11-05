@@ -194,13 +194,26 @@ function resetGame() {
   computerSelection = 'undefined';
   // Reset ComputerIconImage
   updateComputerSelectionImage();
-  // Reset PlayerChoices style
+  // Reset PlayerChoiceIcons style
   playerChoiceIcons.forEach(function (item) {
     item.style.borderColor = 'hsl(0, 0%, 40%)';
     item.style.transform = 'scale(1)';
   });
-  // Reset Announcement
-  pushAnnouncement('May the odds be ever in your favor.');
+  // Random Announcement
+  const newGameQuote = [
+    'May the odds be ever in your favor.',
+    'May the force be with you!',
+    'Godspeed, friend!',
+    'Live long and prosper!',
+    'Go forth and conquer',
+    'Remember me when you’re famous!',
+    'Buona fortuna!',
+    'Have fun storming the castle!',
+    'Here’s a rabbit’s foot.',
+  ];
+  pushAnnouncement(
+    newGameQuote[Math.floor(Math.random() * newGameQuote.length)]
+  );
   // Hide playAgainButton
   togglePlayAgainButton();
 }
