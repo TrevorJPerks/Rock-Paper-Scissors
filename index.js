@@ -205,7 +205,7 @@ function resetGame() {
     'May the force be with you!',
     'Godspeed, friend!',
     'Live long and prosper!',
-    'Go forth and conquer',
+    'Go forth and conquer.',
     'Remember me when you’re famous!',
     'Buona fortuna!',
     'Have fun storming the castle!',
