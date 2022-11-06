@@ -4,7 +4,6 @@ let computerSelection;
 let playerScore = 0;
 let computerScore = 0;
 
-// Create a NodeList containing every div with the class of playerchoice-icon
 const playerChoiceIcons = document.querySelectorAll('.playerchoice-icon');
 
 // Iterate over every node in playerChoiceIcons and add a click EventListener
@@ -46,7 +45,6 @@ function updateComputerSelectionIcon() {
   );
   // Do an animation on computerSelectionIcon
   computerSelectionIcon.classList.add('transform-computerselection-icon');
-
   computerSelectionIcon.addEventListener('transitionend', () => {
     computerSelectionIcon.classList.remove('transform-computerselection-icon');
 
@@ -109,9 +107,8 @@ function playRound() {
       );
       ++computerScore;
   }
-
   updateScoreBoards();
-  //Check score and end the game if score = 3
+
   if (computerScore === 3 || playerScore === 3) {
     toggleWinnerText();
     togglePlayAgainButton();
@@ -119,10 +116,9 @@ function playRound() {
 }
 
 function updateScoreBoards() {
-  //Scoreboard Elements
   const playerScoreDisplay = document.querySelector('.player-score p');
   const computerScoreDisplay = document.querySelector('.computer-score p');
-  // Update Scoreboards
+
   playerScoreDisplay.textContent = `${playerScore}`;
   computerScoreDisplay.textContent = `${computerScore}`;
 }
@@ -151,18 +147,14 @@ function togglePlayAgainButton() {
   );
   // if the score hasn't been reset
   if (computerScore > 0 || playerScore > 0) {
-    // Unhide playAgainButton
     playAgainButton.style.transform = 'scale(1)';
-    // Disable User interaction on playerSelectionContainer
     playerSelectionContainer.classList.add('disable-clicking');
     //Give playAgainButton purpose
     playAgainButton.addEventListener('click', () => {
       resetGame();
     });
   } else {
-    // Hide playAgainButton
     playAgainButton.style.transform = 'scale(0)';
-    // Enable User interaction on playerSelectionContainer
     playerSelectionContainer.classList.remove('disable-clicking');
   }
 }
