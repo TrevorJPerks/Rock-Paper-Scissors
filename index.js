@@ -15,8 +15,8 @@ playerChoiceIcons.forEach(function (item) {
   item.addEventListener('click', function () {
     //On Click, Iterate over every node in the NodeList and set styles to default
     playerChoiceIcons.forEach(function (item) {
-      item.style.borderColor = 'hsl(0, 0%, 40%)';
       item.style.transform = 'scale(1)';
+      item.style.borderColor = 'hsl(0, 0%, 40%)';
     });
     // Change style of the node that is clicked
     item.style.transform = 'scale(1.1)';
@@ -31,7 +31,6 @@ playerChoiceIcons.forEach(function (item) {
     if (item.classList.contains('player-scissors')) {
       playerSelection = 'scissors';
     }
-
     playRound();
   });
 });
@@ -102,13 +101,11 @@ function playRound() {
 
   //Announce round winner, and incement score based on Selections
   switch (playerSelection + '.' + computerSelection) {
-    // Tie
     case 'rock.rock':
     case 'paper.paper':
     case 'scissors.scissors':
       pushAnnouncement(`It is a tie! You both chose ${playerSelection}!`);
       break;
-    // Player wins
     case 'rock.scissors':
     case 'paper.rock':
     case 'scissors.paper':
@@ -117,7 +114,6 @@ function playRound() {
       );
       ++playerScore;
       break;
-    // Computer Wins
     case 'scissors.rock':
     case 'rock.paper':
     case 'paper.scissors':
@@ -139,6 +135,7 @@ function toggleWinnerText() {
     '.computer-score .winner-text'
   );
   const playerWinnerText = document.querySelector('.player-score .winner-text');
+
   if (computerScore > playerScore) {
     computerWinnerText.style.opacity = '100';
   } else {
@@ -187,8 +184,8 @@ function resetGame() {
   updateComputerSelectionImage();
   // Reset PlayerChoiceIcons style
   playerChoiceIcons.forEach(function (item) {
-    item.style.borderColor = 'hsl(0, 0%, 40%)';
     item.style.transform = 'scale(1)';
+    item.style.borderColor = 'hsl(0, 0%, 40%)';
   });
   // Random Announcement
   const newGameQuotes = [
