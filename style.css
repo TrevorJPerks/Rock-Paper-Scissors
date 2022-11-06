@@ -99,7 +99,7 @@ img {
   background-color: hsl(120, 46%, 60%);
   color: white;
   border-radius: 10px;
-  margin-top: 20px;
+  margin-block: 20px;
   box-shadow: 10px 10px 14px -9px hsla(0, 0%, 0%, 0.42);
   -webkit-box-shadow: 10px 10px 14px -9px hsla(0, 0%, 0%, 0.42);
   -moz-box-shadow: 10px 10px 14px -9px hsla(0, 0%, 0%, 0.42);
@@ -138,6 +138,12 @@ nav a {
 footer img {
   width: 16px;
   height: auto;
+}
+
+@media (max-width: 400px) {
+  .game-container {
+    width: 280px;
+  }
 }
 
 /* JS Transform Rulesets */
