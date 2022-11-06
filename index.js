@@ -102,11 +102,13 @@ function playRound() {
 
   //Announce round winner, and incement score based on Selections
   switch (playerSelection + '.' + computerSelection) {
+    // Tie
     case 'rock.rock':
     case 'paper.paper':
     case 'scissors.scissors':
       pushAnnouncement(`It is a tie! You both chose ${playerSelection}!`);
       break;
+    // Player wins
     case 'rock.scissors':
     case 'paper.rock':
     case 'scissors.paper':
@@ -115,6 +117,7 @@ function playRound() {
       );
       ++playerScore;
       break;
+    // Computer Wins
     case 'scissors.rock':
     case 'rock.paper':
     case 'paper.scissors':
@@ -188,7 +191,7 @@ function resetGame() {
     item.style.transform = 'scale(1)';
   });
   // Random Announcement
-  const newGameQuote = [
+  const newGameQuotes = [
     'May the odds be ever in your favor.',
     'May the force be with you!',
     'Godspeed, friend!',
@@ -200,7 +203,7 @@ function resetGame() {
     'Here’s a rabbit’s foot.',
   ];
   pushAnnouncement(
-    newGameQuote[Math.floor(Math.random() * newGameQuote.length)]
+    newGameQuotes[Math.floor(Math.random() * newGameQuotes.length)]
   );
   // Hide playAgainButton
   togglePlayAgainButton();
