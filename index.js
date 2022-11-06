@@ -1,8 +1,3 @@
-function pushAnnouncement(str) {
-  const announcementText = document.querySelector('.announcement');
-  announcementText.textContent = str;
-}
-
 let playerSelection;
 let computerSelection;
 
@@ -69,19 +64,24 @@ function updateComputerSelectionImage() {
       computerSelectionImage.src = 'images/blankplaceholder-img.png';
       computerSelectionImage.alt = 'a blank image used as a placeholder';
       break;
-    case 'rock':
+    case 'Rock':
       computerSelectionImage.src = 'images/rock-svg.svg';
       computerSelectionImage.alt = 'a solid black cartoon style closed fist';
       break;
-    case 'paper':
+    case 'Paper':
       computerSelectionImage.src = 'images/paper-svg.svg';
       computerSelectionImage.alt = 'a solid black cartoon style open hand';
       break;
-    case 'scissors':
+    case 'Scissors':
       computerSelectionImage.src = 'images/scissors-svg.svg';
       computerSelectionImage.alt =
         'a solid black cartoon style hand holding out two fingers';
   }
+}
+
+function pushAnnouncement(str) {
+  const announcementText = document.querySelector('.announcement');
+  announcementText.textContent = str;
 }
 
 function playRound() {
