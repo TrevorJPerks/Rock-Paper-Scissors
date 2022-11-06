@@ -3,9 +3,11 @@ function pushAnnouncement(str) {
   announcementText.textContent = str;
 }
 
-// Keep track of Selections
 let playerSelection;
 let computerSelection;
+
+let playerScore = 0;
+let computerScore = 0;
 
 // Create a NodeList containing every div with the class of playerchoice-icon
 const playerChoiceIcons = document.querySelectorAll('.playerchoice-icon');
@@ -23,20 +25,20 @@ playerChoiceIcons.forEach(function (item) {
     item.style.borderColor = 'hsla(120, 44%, 49%, 0.856)';
     // Update playerSelection
     if (item.classList.contains('player-rock')) {
-      playerSelection = 'rock';
+      playerSelection = 'Rock';
     }
     if (item.classList.contains('player-paper')) {
-      playerSelection = 'paper';
+      playerSelection = 'Paper';
     }
     if (item.classList.contains('player-scissors')) {
-      playerSelection = 'scissors';
+      playerSelection = 'Scissors';
     }
     playRound();
   });
 });
 
 function getComputerSelection() {
-  const computerChoices = ['rock', 'paper', 'scissors'];
+  const computerChoices = ['Rock', 'Paper', 'Scissors'];
   const randomNumGen = Math.floor(Math.random() * 3);
   computerSelection = computerChoices[randomNumGen];
 
@@ -82,9 +84,39 @@ function updateComputerSelectionImage() {
   }
 }
 
-//Score variables
-let playerScore = 0;
-let computerScore = 0;
+function playRound() {
+  getComputerSelection();
+
+  switch (playerSelection + '.' + computerSelection) {
+    case 'Rock.Rock':
+    case 'Paper.Paper':
+    case 'Scissors.Scissors':
+      pushAnnouncement(`It is a tie! You both chose ${playerSelection}!`);
+      break;
+    case 'Rock.Scissors':
+    case 'Paper.Rock':
+    case 'Scissors.Paper':
+      pushAnnouncement(
+        `You scored. ${playerSelection} beats ${computerSelection}!`
+      );
+      ++playerScore;
+      break;
+    case 'Scissors.Rock':
+    case 'Rock.Paper':
+    case 'Paper.Scissors':
+      pushAnnouncement(
+        `Computer Scored. ${computerSelection} beats ${playerSelection}!`
+      );
+      ++computerScore;
+  }
+
+  updateScoreBoards();
+  //Check score and end the game if score = 3
+  if (computerScore === 3 || playerScore === 3) {
+    toggleWinnerText();
+    togglePlayAgainButton();
+  }
+}
 
 function updateScoreBoards() {
   //Scoreboard Elements
@@ -93,41 +125,6 @@ function updateScoreBoards() {
   // Update Scoreboards
   playerScoreDisplay.textContent = `${playerScore}`;
   computerScoreDisplay.textContent = `${computerScore}`;
-}
-
-// Determine round winner. Increment Score.
-function playRound() {
-  getComputerSelection();
-
-  //Announce round winner, and incement score based on Selections
-  switch (playerSelection + '.' + computerSelection) {
-    case 'rock.rock':
-    case 'paper.paper':
-    case 'scissors.scissors':
-      pushAnnouncement(`It is a tie! You both chose ${playerSelection}!`);
-      break;
-    case 'rock.scissors':
-    case 'paper.rock':
-    case 'scissors.paper':
-      pushAnnouncement(
-        `You scored. ${playerSelection} beats ${computerSelection}!`
-      );
-      ++playerScore;
-      break;
-    case 'scissors.rock':
-    case 'rock.paper':
-    case 'paper.scissors':
-      pushAnnouncement(
-        `Computer Scored. ${computerSelection} beats ${playerSelection}!`
-      );
-      ++computerScore;
-  }
-  updateScoreBoards();
-  //Check score and end the game if score = 3
-  if (computerScore === 3 || playerScore === 3) {
-    toggleWinnerText();
-    togglePlayAgainButton();
-  }
 }
 
 function toggleWinnerText() {
