@@ -19,32 +19,29 @@ body {
   height: 100vh;
   background-color: hsl(233deg 12% 13%);
 }
-/* Player score */
-p {
+
+.player-score p {
   color: hsl(180, 36%, 82%);
   font-size: 36px;
 }
-/* Computer score */
+
 .computer-score p {
   color: hsl(289, 100%, 85%);
+  font-size: 36px;
 }
 
 .game-container {
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
   text-align: center;
   width: 400px;
-  border-radius: 10px;
-  border: 3px double hsl(300, 100%, 60%);
   background-color: hsl(60, 90%, 92%);
+  border-radius: 20px;
+  border: 3px double hsl(300, 100%, 60%);
   box-shadow: 10px 10px 14px -9px hsla(0, 0%, 0%, 0.42);
 }
 
 .announcement {
-  display: flex;
-  justify-content: center;
-  align-items: center;
   height: 70px;
   margin: 16px;
   font-size: 24px;
@@ -55,6 +52,7 @@ p {
   justify-content: space-evenly;
   align-items: center;
 }
+
 .player-selection-container {
   display: flex;
   flex-wrap: wrap;
@@ -73,7 +71,7 @@ img {
   justify-content: space-around;
   width: 100px;
   height: 100px;
-  border-radius: 5%;
+  border-radius: 5px;
   border: 6px dashed hsl(0, 0%, 40%);
   box-shadow: 10px 10px 14px -9px hsla(0, 0%, 0%, 0.42);
 }
@@ -112,14 +110,14 @@ img {
 }
 
 .winner-text {
-  transition: all 0.4s ease;
   font-size: 20px;
   color: hsl(120, 100%, 47%);
+  transition: all 0.4s ease;
 }
 
 /* JS Transform Rulesets */
 .transform-computerselection-icon {
-  transform: scale(0.1);
+  transform: scale(0);
 }
 
 .computer-score .winner-text {
