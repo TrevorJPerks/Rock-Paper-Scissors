@@ -18,6 +18,7 @@ body {
   justify-content: center;
   align-items: center;
   height: 100vh;
+  max-height: -webkit-fill-available;
   background-color: hsl(233deg 12% 13%);
 }
 
