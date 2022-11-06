@@ -14,6 +14,7 @@
 
 body {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   height: 100vh;
@@ -31,6 +32,7 @@ body {
 }
 
 .game-container {
+  margin-top: 100px;
   display: flex;
   flex-direction: column;
   text-align: center;
@@ -113,6 +115,28 @@ img {
   font-size: 20px;
   color: hsl(120, 100%, 47%);
   transition: all 0.4s ease;
+}
+
+footer {
+  margin-top: auto;
+  margin-bottom: 8px;
+}
+
+nav a {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  color: hsl(0, 0%, 50%);
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 12px;
+  font-weight: 100;
+  opacity: 0.4;
+}
+
+footer img {
+  width: 16px;
+  height: auto;
 }
 
 /* JS Transform Rulesets */
