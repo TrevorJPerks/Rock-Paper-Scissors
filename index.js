@@ -9,7 +9,7 @@ const playerChoiceIcons = document.querySelectorAll('.playerchoice-icon');
 // Iterate over every node in playerChoiceIcons and add a click EventListener
 playerChoiceIcons.forEach(function (item) {
   item.addEventListener('click', function () {
-    //On Click, Iterate over every node in the NodeList and set styles to default
+    //On Click, Iterate over every node in playerChoiceIcons and set styles to default
     playerChoiceIcons.forEach(function (item) {
       item.style.transform = 'scale(1)';
       item.style.borderColor = 'hsl(0, 0%, 40%)';
